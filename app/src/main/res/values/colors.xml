@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#415225</color>
+    <color name="colorPrimaryDark">#3c3734</color>
+    <color name="colorAccent">#E4982D</color>
+    <color name="colorFontWhite">#ffffff</color>
+    <color name="colorFontOffWhite">#f7f7f7</color>
+    <color name="colorFontBlack">#000000</color>
+    <color name='colorBackground'>#cfccc3</color>
+    <color name="colorMultiDelete">#b1c4d9</color>
+</resources>

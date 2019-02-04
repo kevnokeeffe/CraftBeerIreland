@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ie.craftbeerireland.activities.Add">
+
+    <TextView
+        android:id="@+id/addfooter"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:paddingTop="5dp"
+        android:text="@string/appWebsite"
+        android:textAlignment="center"
+        android:textColor="@color/colorFontWhite"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/addPriceTV"
+        android:layout_width="99dp"
+        android:layout_height="43dp"
+        android:paddingTop="10dp"
+        android:text="@string/beerPriceLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
+
+    <TextView
+        android:id="@+id/addCraftBarTV"
+        android:layout_width="99dp"
+        android:layout_height="43dp"
+        android:paddingTop="10dp"
+        android:text="@string/craftBarLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <TextView
+        android:id="@+id/addNameTV"
+        android:layout_width="99dp"
+        android:layout_height="43dp"
+        android:paddingTop="10dp"
+        android:text="@string/beerNameLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.036" />
+
+    <EditText
+        android:id="@+id/addNameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Enter Beer Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toEndOf="@+id/addNameTV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <EditText
+        android:id="@+id/addPriceET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter Price"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toEndOf="@+id/addPriceTV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.296" />
+
+    <EditText
+        android:id="@+id/addPubET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="44dp"
+        android:ems="10"
+        android:hint="Enter Bar Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addPriceET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toEndOf="@+id/addCraftBarTV"
+        app:layout_constraintTop_toBottomOf="@+id/addNameET"
+        app:layout_constraintVertical_bias="0.525" />
+
+    <RatingBar
+        android:id="@+id/addRatingBar"
+        android:layout_width="242dp"
+        android:layout_height="52dp"
+        android:rating="1"
+        android:stepSize="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPriceET"
+        app:layout_constraintVertical_bias="0.213" />
+
+    <Button
+        android:id="@+id/addBeerBtn"
+        android:layout_width="79dp"
+        android:layout_height="84dp"
+        android:background="@color/colorFontOffWhite"
+        android:drawableTop="@drawable/blue_add_48"
+        android:onClick="addBeer"
+        android:text="@string/addBeerBtnLbl"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addRatingBar"
+        app:layout_constraintVertical_bias="0.714" />
+
+</android.support.constraint.ConstraintLayout>
