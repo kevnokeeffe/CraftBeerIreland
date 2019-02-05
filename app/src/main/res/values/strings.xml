@@ -26,4 +26,5 @@
     <string name="informationLbl">Information</string>
     <string name="emptyMessageLbl">You have no Beer\'s added, go have a beer!</string>
     <string name="placeHolder">Placeholder</string>
+    <string name="deleteCoffeesLbl">Delete</string>
 </resources>

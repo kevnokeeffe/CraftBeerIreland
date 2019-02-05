@@ -7,5 +7,6 @@
     <color name="colorFontOffWhite">#f7f7f7</color>
     <color name="colorFontBlack">#000000</color>
     <color name='colorBackground'>#cfccc3</color>
-    <color name="colorMultiDelete">#b1c4d9</color>
+    <color name='colorMultiDelete'>#b1c4d9</color>
+
 </resources>
