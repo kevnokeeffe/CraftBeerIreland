@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.support.v4.app.Fragment;
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
+import ie.craftbeerireland.fragments.MapsFragment;
 import ie.craftbeerireland.models.CraftBeer;
 //import ie.craftbeerireland.fragments.CraftBeerFragment;
 
@@ -97,16 +98,16 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_add) {
+            startActivity(new Intent(this, Add.class));
+        } else if (id == R.id.nav_search) {
+            startActivity(new Intent(this, Search.class));
+        } else if (id == R.id.nav_edit) {
+            //startActivity(new Intent(this, Edit.class));
+        } else if (id == R.id.nav_favourites) {
+            startActivity(new Intent(this, Favourites.class));
         //} else if (id == R.id.nav_share) {
-
+            //startActivity(new Intent(this, Favourites.class));
         //} else if (id == R.id.nav_send) {
 
         }
@@ -130,6 +131,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, craftBeerFragment)
                 .commit();
+
+//        mapsFragment = MapsFragment.newInstance();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.maps_container, mapsFragment)
+//                .commit();
     }
 
     public void setupBeers(){

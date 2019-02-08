@@ -5,21 +5,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_add"
             android:icon="@drawable/baseline_local_drink_black_18dp"
             android:title="Add Beer Review" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_search"
             android:icon="@drawable/baseline_search_black_18dp"
             android:title="Search for Beer" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_edit"
             android:icon="@drawable/baseline_edit_black_18dp"
             android:title="Edit Beer Review" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/baseline_favorite_black"
+            android:title="Favourites" />
     </group>
 
     <!--<item android:title="Communicate">-->

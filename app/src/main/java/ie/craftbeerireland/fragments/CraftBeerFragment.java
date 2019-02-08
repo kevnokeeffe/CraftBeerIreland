@@ -136,15 +136,15 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     {
         switch (menuItem.getItemId())
         {
-            case R.id.menu_item_delete_coffee:
-                deleteCoffees(actionMode);
+            case R.id.menu_item_delete_beer:
+                deleteBeers(actionMode);
                 return true;
             default:
                 return false;
         }
     }
 
-    private void deleteCoffees(ActionMode actionMode)
+    private void deleteBeers(ActionMode actionMode)
     {
         for (int i = listAdapter.getCount() - 1; i >= 0; i--)
         {
