@@ -12,19 +12,26 @@ import java.util.ArrayList;
 
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
+import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
 
 public class Base extends AppCompatActivity {
 
-    public static ArrayList<CraftBeer> beerList = new ArrayList<CraftBeer>();
+    //public static ArrayList<CraftBeer> beerList = new ArrayList<CraftBeer>();
     public Bundle activityInfo;
     public CraftBeerFragment craftBeerFragment;
+    public CraftBeerIreland app;
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        app = (CraftBeerIreland) getApplication();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
+
         return true;
     }
 

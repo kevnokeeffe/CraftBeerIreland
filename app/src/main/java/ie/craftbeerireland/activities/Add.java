@@ -1,9 +1,9 @@
 package ie.craftbeerireland.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.models.CraftBeer;
 
-import static ie.craftbeerireland.activities.Base.beerList;
+
 
 
 public class Add extends Base{
@@ -54,7 +54,7 @@ public class Add extends Base{
 
             //Log.v("Craft Beer Ireland","Add : " + beerList);
 
-            beerList.add(craft);
+            app.beerList.add(craft);
             startActivity(new Intent(this, Home.class));
         }else
             Toast.makeText(this,

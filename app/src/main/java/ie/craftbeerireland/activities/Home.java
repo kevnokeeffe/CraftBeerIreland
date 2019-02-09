@@ -38,12 +38,17 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Information", Snackbar.LENGTH_LONG)
+                        .setAction("More Info...", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        }).show();
             }
         });
 
-        if(beerList.isEmpty()) setupBeers();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,12 +58,14 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(app.beerList.isEmpty()) setupBeers();
     }
 
-    public void add(View v)
-    {
-        startActivity(new Intent(this, Add.class));
-    }
+//    public void add(View v)
+//    {
+//        startActivity(new Intent(this, Add.class));
+//    }
 
     @Override
     public void onBackPressed() {
@@ -102,7 +109,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             startActivity(new Intent(this, Add.class));
         } else if (id == R.id.nav_search) {
             startActivity(new Intent(this, Search.class));
-        } else if (id == R.id.nav_edit) {
+        //} else if (id == R.id.nav_edit) {
             //startActivity(new Intent(this, Edit.class));
         } else if (id == R.id.nav_favourites) {
             startActivity(new Intent(this, Favourites.class));
@@ -121,11 +128,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     protected void onResume() {
         super.onResume();
 
-        if(beerList.isEmpty())
-            emptyList.setText(getString(R.string.emptyMessageLbl));
-        else
-            emptyList.setText("");
-        Log.v("Craft Beer Ireland", "Home : " + beerList);
+
 
         craftBeerFragment = CraftBeerFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
@@ -139,6 +142,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     }
 
     public void setupBeers(){
-        beerList.add(new CraftBeer("Yellow Belly","Grady's Yard",4.5,5.50,true));
+        app.beerList.add(new CraftBeer("Yellow Belly","Grady's Yard",4.5,5.50,true));
     }
 }

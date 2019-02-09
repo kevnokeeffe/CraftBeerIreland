@@ -15,11 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.activities.Base;
 import ie.craftbeerireland.activities.Edit;
+import ie.craftbeerireland.activities.Favourites;
+import ie.craftbeerireland.adapters.BeerFilter;
 import ie.craftbeerireland.adapters.BeerListAdapter;
+import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
 
 public class CraftBeerFragment extends ListFragment implements View.OnClickListener, AbsListView.MultiChoiceModeListener{
@@ -28,6 +35,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     public Base activity;
     public static BeerListAdapter listAdapter;
     public ListView listView;
+    public BeerFilter beerFilter;
 
     public CraftBeerFragment() {
         // Required empty public constructor
@@ -59,8 +67,26 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        listAdapter = new BeerListAdapter(activity,this,Base.beerList);
+        listAdapter = new BeerListAdapter(activity,this, activity.app.beerList);
+        beerFilter = new BeerFilter(activity.app.beerList,"all",listAdapter);
+        if (getActivity() instanceof Favourites) {
+            beerFilter.setFilter("favourites"); // Set the filter text field from 'all' to 'favourites'
+            beerFilter.filter(null); // Filter the data, but don't use any prefix
+            listAdapter.notifyDataSetChanged(); // Update the adapter
+        }
         setListAdapter(listAdapter);
+        //setRandomCoffee();
+        checkEmptyList();
+    }
+
+    public void checkEmptyList()
+    {
+        TextView recentList = getActivity().findViewById(R.id.emptyList);
+
+        if(activity.app.beerList.isEmpty())
+            recentList.setText(getString(R.string.emptyMessageLbl));
+        else
+            recentList.setText("");
     }
 
     @Override
@@ -92,7 +118,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
         {
             public void onClick(DialogInterface dialog, int id)
             {
-                Base.beerList.remove(craftBeer); // remove from our list
+                activity.app.beerList.remove(craftBeer); // remove from our list
                 listAdapter.beerList.remove(craftBeer); // update adapters data
                 listAdapter.notifyDataSetChanged(); // refresh adapter
             }
@@ -150,7 +176,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
         {
             if (listView.isItemChecked(i))
             {
-                Base.beerList.remove(listAdapter.getItem(i));
+                activity.app.beerList.remove(listAdapter.getItem(i));
             }
         }
         actionMode.finish();
@@ -164,4 +190,30 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     @Override
     public void onItemCheckedStateChanged(ActionMode actionMode, int position, long id, boolean checked)
     {}
+
+    public void setRandomCoffee() {
+
+        ArrayList<CraftBeer> beerList = new ArrayList<>();
+
+        for(CraftBeer c : activity.app.beerList)
+            if (c.favourite)
+                beerList.add(c);
+
+        if (activity instanceof Favourites)
+            if( !beerList.isEmpty()) {
+                CraftBeer randomCoffee = beerList.get(new Random()
+                        .nextInt(beerList.size()));
+
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerName)).setText(randomCoffee.beerName);
+                ((TextView) getActivity().findViewById(R.id.favouriteCraftBar)).setText(randomCoffee.craftBar);
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerPrice)).setText("€ " + randomCoffee.price);
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerRating)).setText(randomCoffee.rating + " *");
+            }
+            else {
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerName)).setText("N/A");
+                ((TextView) getActivity().findViewById(R.id.favouriteCraftBar)).setText("N/A");
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerPrice)).setText("N/A");
+                ((TextView) getActivity().findViewById(R.id.favouriteBeerRating)).setText("N/A");
+            }
+    }
 }

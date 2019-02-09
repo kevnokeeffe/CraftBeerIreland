@@ -50,7 +50,7 @@ public class Edit extends Base {
 
     private CraftBeer getBeerObject(String id) {
 
-        for (CraftBeer c : beerList)
+        for (CraftBeer c : app.beerList)
             if (c.beerId.equalsIgnoreCase(id))
                 return c;
 

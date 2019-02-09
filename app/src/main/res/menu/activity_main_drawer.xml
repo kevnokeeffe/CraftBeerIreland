@@ -12,10 +12,10 @@
             android:id="@+id/nav_search"
             android:icon="@drawable/baseline_search_black_18dp"
             android:title="Search for Beer" />
-        <item
-            android:id="@+id/nav_edit"
-            android:icon="@drawable/baseline_edit_black_18dp"
-            android:title="Edit Beer Review" />
+        <!--<item-->
+            <!--android:id="@+id/nav_edit"-->
+            <!--android:icon="@drawable/baseline_edit_black_18dp"-->
+            <!--android:title="Edit Beer Review" />-->
         <item
             android:id="@+id/nav_favourites"
             android:icon="@drawable/baseline_favorite_black"
