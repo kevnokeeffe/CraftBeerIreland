@@ -57,15 +57,6 @@ public class Edit extends Base {
         return null;
     }
 
-//    private int getCoffeeIndex(Coffee obj) {
-//
-//        for (Coffee c : coffeeList)
-//            if (c.coffeeId == obj.coffeeId)
-//                return coffeeList.indexOf(c);
-//
-//        return -1;
-//    }
-
     public void saveCraftBeer(View v) {
 
         String beerName = ((EditText) findViewById(R.id.editNameET)).getText().toString();

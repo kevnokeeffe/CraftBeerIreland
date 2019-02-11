@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +19,6 @@ import ie.craftbeerireland.models.CraftBeer;
 
 public class Base extends AppCompatActivity {
 
-    //public static ArrayList<CraftBeer> beerList = new ArrayList<CraftBeer>();
     public Bundle activityInfo;
     public CraftBeerFragment craftBeerFragment;
     public CraftBeerIreland app;
@@ -36,11 +37,12 @@ public class Base extends AppCompatActivity {
     }
 
     public void menuHome(MenuItem m) {
-        startActivity(new Intent(this, Home.class));
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
-    public void menuInfo(MenuItem m)
-    {
+    public void menuInfo(MenuItem m) {
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.appAbout))
                 .setMessage(getString(R.string.appDesc)
@@ -55,8 +57,9 @@ public class Base extends AppCompatActivity {
                 .show();
     }
 
-    public void menuHelp(MenuItem m)
-    {
+    public void menuHelp(MenuItem m) {
 
     }
+
 }
+

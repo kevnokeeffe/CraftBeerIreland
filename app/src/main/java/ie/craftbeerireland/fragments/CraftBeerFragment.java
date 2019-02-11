@@ -38,7 +38,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     public BeerFilter beerFilter;
 
     public CraftBeerFragment() {
-        // Required empty public constructor
+
     }
 
     public static CraftBeerFragment newInstance() {
@@ -70,9 +70,9 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
         listAdapter = new BeerListAdapter(activity,this, activity.app.beerList);
         beerFilter = new BeerFilter(activity.app.beerList,"all",listAdapter);
         if (getActivity() instanceof Favourites) {
-            beerFilter.setFilter("favourites"); // Set the filter text field from 'all' to 'favourites'
-            beerFilter.filter(null); // Filter the data, but don't use any prefix
-            listAdapter.notifyDataSetChanged(); // Update the adapter
+            beerFilter.setFilter("favourites");
+            beerFilter.filter(null);
+            listAdapter.notifyDataSetChanged();
         }
         setListAdapter(listAdapter);
         setRandomBeer();
@@ -118,9 +118,9 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
         {
             public void onClick(DialogInterface dialog, int id)
             {
-                activity.app.beerList.remove(craftBeer); // remove from our list
-                listAdapter.beerList.remove(craftBeer); // update adapters data
-                listAdapter.notifyDataSetChanged(); // refresh adapter
+                activity.app.beerList.remove(craftBeer);
+                listAdapter.beerList.remove(craftBeer);
+                listAdapter.notifyDataSetChanged();
             }
         }).setNegativeButton("No", new DialogInterface.OnClickListener()
         {
@@ -136,10 +136,10 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Bundle activityInfo = new Bundle(); // Creates a new Bundle object
+        Bundle activityInfo = new Bundle();
         activityInfo.putString("beerId",(String) v.getTag());
 
-        Intent goEdit = new Intent(getActivity(), Edit.class); // Creates a new Intent
+        Intent goEdit = new Intent(getActivity(), Edit.class);
         goEdit.putExtras(activityInfo);
         getActivity().startActivity(goEdit);
     }

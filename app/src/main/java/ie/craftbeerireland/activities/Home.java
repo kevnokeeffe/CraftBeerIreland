@@ -23,7 +23,7 @@ import ie.craftbeerireland.R;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
 import ie.craftbeerireland.fragments.MapsFragment;
 import ie.craftbeerireland.models.CraftBeer;
-//import ie.craftbeerireland.fragments.CraftBeerFragment;
+
 
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,24 +33,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         emptyList = findViewById(R.id.emptyList);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Information", Snackbar.LENGTH_LONG)
-                        .setAction("More Info...", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                            }
-                        }).show();
-            }
-        });
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,12 +51,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         if(app.beerList.isEmpty()) setupBeers();
     }
 
-//    public void add(View v)
-//    {
-//        startActivity(new Intent(this, Add.class));
-//    }
-
-
 
     @Override
     public void onBackPressed() {
@@ -77,7 +58,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            //super.onBackPressed();
             new AlertDialog.Builder(this)
                     .setMessage("Are you sure you want to exit?")
                     .setCancelable(false)
@@ -94,19 +74,13 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -117,11 +91,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            //startActivity(new Intent(this, Add.class));
+
             Intent intent = new Intent(getApplicationContext(), Add.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
@@ -130,17 +104,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             Intent intent = new Intent(getApplicationContext(), Search.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //startActivity(new Intent(this, Search.class));
-        //} else if (id == R.id.nav_edit) {
-            //startActivity(new Intent(this, Edit.class));
+
         } else if (id == R.id.nav_favourites) {
             Intent intent = new Intent(getApplicationContext(), Favourites.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //startActivity(new Intent(this, Favourites.class));
-        //} else if (id == R.id.nav_share) {
-            //startActivity(new Intent(this, Favourites.class));
-        //} else if (id == R.id.nav_send) {
 
         }
 
@@ -159,11 +127,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, craftBeerFragment)
                 .commit();
-
-//        mapsFragment = MapsFragment.newInstance();
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.maps_container, mapsFragment)
-//                .commit();
     }
 
     public void setupBeers(){
