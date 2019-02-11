@@ -75,7 +75,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
             listAdapter.notifyDataSetChanged(); // Update the adapter
         }
         setListAdapter(listAdapter);
-        //setRandomCoffee();
+        setRandomBeer();
         checkEmptyList();
     }
 
@@ -191,7 +191,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
     public void onItemCheckedStateChanged(ActionMode actionMode, int position, long id, boolean checked)
     {}
 
-    public void setRandomCoffee() {
+    public void setRandomBeer() {
 
         ArrayList<CraftBeer> beerList = new ArrayList<>();
 

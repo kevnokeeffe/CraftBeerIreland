@@ -86,7 +86,10 @@ public class Edit extends Base {
             cBeer.price = beerPrice;
             cBeer.rating = ratingValue;
 
-            startActivity(new Intent(this,Home.class));
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+
 
         } else
             Toast.makeText(this, "You must Enter Something for Name and Bar",Toast.LENGTH_SHORT).show();

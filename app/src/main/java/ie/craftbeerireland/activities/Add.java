@@ -55,7 +55,10 @@ public class Add extends Base{
             //Log.v("Craft Beer Ireland","Add : " + beerList);
 
             app.beerList.add(craft);
-            startActivity(new Intent(this, Home.class));
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //startActivity(new Intent(this, Home.class));
         }else
             Toast.makeText(this,
                     "You must Enter Something for "

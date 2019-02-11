@@ -1,5 +1,7 @@
 package ie.craftbeerireland.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -67,14 +69,27 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 //        startActivity(new Intent(this, Add.class));
 //    }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Home.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
+
     }
 
     @Override
@@ -106,13 +121,23 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            startActivity(new Intent(this, Add.class));
+            //startActivity(new Intent(this, Add.class));
+            Intent intent = new Intent(getApplicationContext(), Add.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+           ;
         } else if (id == R.id.nav_search) {
-            startActivity(new Intent(this, Search.class));
+            Intent intent = new Intent(getApplicationContext(), Search.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //startActivity(new Intent(this, Search.class));
         //} else if (id == R.id.nav_edit) {
             //startActivity(new Intent(this, Edit.class));
         } else if (id == R.id.nav_favourites) {
-            startActivity(new Intent(this, Favourites.class));
+            Intent intent = new Intent(getApplicationContext(), Favourites.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //startActivity(new Intent(this, Favourites.class));
         //} else if (id == R.id.nav_share) {
             //startActivity(new Intent(this, Favourites.class));
         //} else if (id == R.id.nav_send) {
