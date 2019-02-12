@@ -43,4 +43,6 @@ public class BeerListAdapter extends ArrayAdapter<CraftBeer> {
     public CraftBeer getItem(int position) {
         return beerList.get(position);
     }
+
+
 }

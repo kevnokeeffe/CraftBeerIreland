@@ -40,9 +40,9 @@ public class CraftBeerItem {
         ImageView imgIcon = view.findViewById(R.id.rowFavouriteImg);
 
         if (beer.favourite == true)
-            imgIcon.setImageResource(R.drawable.favourites_72_on);
+            imgIcon.setImageResource(R.drawable.tumbs_on);
         else
-            imgIcon.setImageResource(R.drawable.favourites_72);
+            imgIcon.setImageResource(R.drawable.tumbs_neu);
 
 
     }

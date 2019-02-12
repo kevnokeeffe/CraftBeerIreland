@@ -170,7 +170,7 @@ public class CraftBeerFragment extends ListFragment implements View.OnClickListe
         }
     }
 
-    private void deleteBeers(ActionMode actionMode)
+    public void deleteBeers(ActionMode actionMode)
     {
         for (int i = listAdapter.getCount() - 1; i >= 0; i--)
         {

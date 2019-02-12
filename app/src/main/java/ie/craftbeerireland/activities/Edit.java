@@ -40,10 +40,10 @@ public class Edit extends Base {
         editFavourite = findViewById(R.id.editFavourite);
 
         if (cBeer.favourite == true) {
-            editFavourite.setImageResource(R.drawable.favourites_72_on);
+            editFavourite.setImageResource(R.drawable.tumbs_on);
             isFavourite = true;
         } else {
-            editFavourite.setImageResource(R.drawable.favourites_72);
+            editFavourite.setImageResource(R.drawable.tumbs_neu);
             isFavourite = false;
         }
     }
@@ -92,12 +92,12 @@ public class Edit extends Base {
             cBeer.favourite = false;
             Toast.makeText(this,"Removed From Favourites",Toast.LENGTH_SHORT).show();
             isFavourite = false;
-            editFavourite.setImageResource(R.drawable.favourites_72);
+            editFavourite.setImageResource(R.drawable.tumbs_neu);
         } else {
             cBeer.favourite = true;
             Toast.makeText(this,"Added to Favourites !!",Toast.LENGTH_SHORT).show();
             isFavourite = true;
-            editFavourite.setImageResource(R.drawable.favourites_72_on);
+            editFavourite.setImageResource(R.drawable.tumbs_on);
         }
     }
 }

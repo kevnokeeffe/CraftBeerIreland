@@ -18,9 +18,6 @@ import android.widget.Toast;
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.models.CraftBeer;
 
-
-
-
 public class Add extends Base{
 
 

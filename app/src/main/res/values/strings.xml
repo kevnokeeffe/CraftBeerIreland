@@ -28,6 +28,12 @@
     <string name="placeHolder">Placeholder</string>
     <string name="deleteCoffeesLbl">Delete</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="beerTypes">
+        <item>All Types</item>
+        <item>Favourites</item>
+        <item>\> 3\* Rating</item>
+    </string-array>
+
 </resources>
