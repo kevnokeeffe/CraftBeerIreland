@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/editBarTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:background="@color/colorPrimary"
+        android:paddingBottom="2dp"
+        android:text="@string/beerDetailsLbl"
+        android:textAlignment="center"
+        android:textColor="@color/colorFontWhite"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFavourite" />
+
+
+    <TextView
+        android:id="@+id/editPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="279dp"
+        android:layout_marginEnd="17dp"
+        android:text="@string/beerPriceLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editPriceET"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editCraftBarTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/craftBarLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editPriceET"
+        app:layout_constraintEnd_toStartOf="@+id/editBarET" />
+
+    <TextView
+        android:id="@+id/editNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="34dp"
+        android:text="@string/beerNameLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editBarET"
+        app:layout_constraintEnd_toStartOf="@+id/editNameET" />
+
+    <EditText
+        android:id="@+id/editNameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:ems="10"
+        android:hint="Beer Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editNameTV"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editPriceET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editPriceTV"
+        app:layout_constraintStart_toStartOf="@+id/editBarET" />
+
+    <EditText
+        android:id="@+id/editBarET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bar"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editCraftBarTV"
+        app:layout_constraintStart_toStartOf="@+id/editNameET" />
+
+    <RatingBar
+        android:id="@+id/editRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:rating="1"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPriceET" />
+
+    <Button
+        android:id="@+id/editBeerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorFontOffWhite"
+        android:drawableTop="@drawable/blue_add_48"
+        android:onClick="saveCraftBeer"
+        android:text="@string/saveBeerBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editRatingBar" />
+
+    <TextView
+        android:id="@+id/editTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:text="Title"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/editFavourite"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="5dp"
+        android:onClick="toggle"
+        android:layout_margin="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/editBarTV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tumbs_off" />
+
+
+</android.support.constraint.ConstraintLayout>

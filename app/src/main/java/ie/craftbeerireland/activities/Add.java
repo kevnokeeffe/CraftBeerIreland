@@ -1,9 +1,15 @@
 package ie.craftbeerireland.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.util.Log;
+
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -11,9 +17,6 @@ import android.widget.Toast;
 
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.models.CraftBeer;
-
-import static ie.craftbeerireland.activities.Base.beerList;
-
 
 public class Add extends Base{
 
@@ -27,12 +30,13 @@ public class Add extends Base{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
-
         name = findViewById(R.id.addNameET);
         bar = findViewById(R.id.addPubET);
         price = findViewById(R.id.addPriceET);
         ratingBar = findViewById(R.id.addRatingBar);
     }
+
+
 
     public void addBeer(View v) {
         beerName = name.getText().toString();
@@ -52,10 +56,11 @@ public class Add extends Base{
                     ratingValue,
                     beerPrice, false);
 
-            //Log.v("Craft Beer Ireland","Add : " + beerList);
+            app.beerList.add(craft);
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
 
-            beerList.add(craft);
-            startActivity(new Intent(this, Home.class));
         }else
             Toast.makeText(this,
                     "You must Enter Something for "

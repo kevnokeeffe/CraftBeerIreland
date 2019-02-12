@@ -26,4 +26,14 @@
     <string name="informationLbl">Information</string>
     <string name="emptyMessageLbl">You have no Beer\'s added, go have a beer!</string>
     <string name="placeHolder">Placeholder</string>
+    <string name="deleteCoffeesLbl">Delete</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="beerTypes">
+        <item>All Types</item>
+        <item>Favourites</item>
+        <item>\> 3\* Rating</item>
+    </string-array>
+
 </resources>
