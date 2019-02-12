@@ -19,6 +19,7 @@ public class BeerListAdapter extends ArrayAdapter<CraftBeer> {
 
     public BeerListAdapter(Context context, View.OnClickListener deleteListener, List<CraftBeer> beerList)
     {
+        // TODO: 12/02/2019 ONE
         super(context, R.layout.beer_row, beerList);
 
         this.context = context;

@@ -126,5 +126,9 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         app.beerList.add(new CraftBeer("Moonbeam","Metalman",4.0,5.50,false));
         app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
         app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
+        app.beerList.add(new CraftBeer("Yellow Belly","Grady's Yard",4.5,5.50,true));
+        app.beerList.add(new CraftBeer("Moonbeam","Metalman",4.0,5.50,false));
+        app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
+        app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
     }
 }

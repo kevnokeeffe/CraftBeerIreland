@@ -21,9 +21,9 @@ public class Search extends Base {
     protected void onResume() {
         super.onResume();
 
-        craftBeerFragment = SearchFragment.newInstance(); //get a new Fragment instance
+        craftBeerFragment = SearchFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, craftBeerFragment)
-                .commit(); // add it to the current activity
+                .commit();
     }
 }

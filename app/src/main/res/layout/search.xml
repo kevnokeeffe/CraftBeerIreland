@@ -26,14 +26,11 @@
     <TextView
         android:id="@+id/footer"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="15dp"
         android:background="@color/colorPrimary"
         android:paddingTop="5dp"
-        android:text="@string/appWebsite"
-        android:textAlignment="center"
-        android:textColor="@color/colorFontWhite"
-        android:textSize="16sp"
-        android:textStyle="bold"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

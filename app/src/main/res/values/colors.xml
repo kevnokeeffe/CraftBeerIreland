@@ -9,4 +9,5 @@
     <color name='colorBackground'>#cfccc3</color>
     <color name='colorMultiDelete'>#b1c4d9</color>
     <color name="colourRedFont">#CD5C5C</color>
+    <color name="colorCardShadow">#CD5C5C</color>
 </resources>
