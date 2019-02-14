@@ -59,6 +59,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
                             Intent intent = new Intent(getApplicationContext(), Login.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
+                            Home.this.finish();
                         }
                     })
                     .setNegativeButton("No", null)
