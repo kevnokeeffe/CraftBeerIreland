@@ -3,6 +3,9 @@ package ie.craftbeerireland.main;
 import android.app.Application;
 import android.util.Log;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class CraftBeerIreland extends Application {
     public void onCreate()
     {
         super.onCreate();
+        FirebaseApp.initializeApp(this);
         Log.v("Craft Beer Ireland", "Craft Beer Ireland App Started");
     }
 }

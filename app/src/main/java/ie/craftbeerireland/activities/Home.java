@@ -51,11 +51,14 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             drawer.closeDrawer(GravityCompat.START);
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you want to exit?")
+                    .setMessage("Are you sure you want to go back to the Login screen?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Home.this.finish();
+                            //Home.this.finish();
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
                         }
                     })
                     .setNegativeButton("No", null)

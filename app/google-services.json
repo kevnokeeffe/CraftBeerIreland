@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "634647054883",
+    "firebase_url": "https://craftbeerireland-21dfa.firebaseio.com",
+    "project_id": "craftbeerireland-21dfa",
+    "storage_bucket": "craftbeerireland-21dfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634647054883:android:45a94d94e95df2d7",
+        "android_client_info": {
+          "package_name": "ie.craftbeerireland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634647054883-2pm7ar1vacsbteu9nghco7g56kbsasm4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.craftbeerireland",
+            "certificate_hash": "8156300d77f69817cd78dc3e2e890394a05baf22"
+          }
+        },
+        {
+          "client_id": "634647054883-dbjiqct0eer0bq0g28d4qidkfojvtffq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRgEEBXF3umpm0fxf9BUAfYcH7k_XlStA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634647054883-dbjiqct0eer0bq0g28d4qidkfojvtffq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

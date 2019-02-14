@@ -4,152 +4,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.craftbeerireland.activities.Add"
-    >
+    tools:context="ie.craftbeerireland.activities.Add">
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/addNameTV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:text="@string/beerNameLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
-
-            <TextView
-                android:id="@+id/addNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/beerNameLbl"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorFontBlack"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/addCraftBarTV"
-                app:layout_constraintEnd_toStartOf="@+id/addNameET"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/addNameET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="55dp"
-                android:ems="10"
-                android:hint="Enter Beer Name"
-                android:inputType="textPersonName"
-                app:layout_constraintBaseline_toBaselineOf="@+id/addNameTV"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/addNameTV" />
-        </LinearLayout>
+    <EditText
+        android:id="@+id/addNameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter Beer Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toEndOf="@+id/addNameTV"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
+    <TextView
+        android:id="@+id/addPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/beerPriceLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/addPriceET"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/addPriceTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/beerPriceLbl"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorFontBlack"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/addRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/addPriceET"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addCraftBarTV" />
-
-            <EditText
-                android:id="@+id/addPriceET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:ems="10"
-                android:hint="Enter Price"
-                android:inputType="numberDecimal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/addPriceTV"
-                app:layout_constraintTop_toTopOf="@+id/addPriceTV" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
+    <EditText
+        android:id="@+id/addPriceET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter Price"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addPriceTV"
+        app:layout_constraintTop_toBottomOf="@+id/addPubET" />
 
 
-        <TextView
-            android:id="@+id/addCraftBarTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/addCraftBarTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/craftBarLbl"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorFontBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addPriceTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addNameTV" />
 
 
-            android:text="@string/craftBarLbl"
-            android:textAlignment="textEnd"
-            android:textColor="@color/colorFontBlack"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/addPriceTV"
-            app:layout_constraintEnd_toStartOf="@+id/addPubET"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addNameTV" />
+    <EditText
+        android:id="@+id/addPubET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter Bar Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toEndOf="@+id/addCraftBarTV"
+        app:layout_constraintTop_toBottomOf="@+id/addNameET" />
 
 
-        <EditText
-            android:id="@+id/addPubET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="55dp"
-            android:ems="10"
-            android:hint="Enter Bar Name"
-            android:inputType="textPersonName"
-            app:layout_constraintBaseline_toBaselineOf="@+id/addCraftBarTV"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addCraftBarTV" />
-        </LinearLayout>
+    <RatingBar
+        android:id="@+id/addRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
-
-            <RatingBar
-                android:id="@+id/addRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="94dp"
-                android:rating="1.5"
-                android:stepSize="0.5"
-                app:layout_constraintBottom_toTopOf="@+id/addBeerBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addPriceTV" />
-            <Button
-                android:id="@+id/addBeerBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorFontOffWhite"
-                android:drawableTop="@drawable/baseline_add_circle_outline_black_18dp"
-                android:onClick="addBeer"
-                android:text="@string/addBeerBtnLbl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addRatingBar" />
-        </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:rating="1.5"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPriceET" />
 
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/addBeerBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addRatingBar">
 
 
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/addBeer"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/save_button"
+        android:onClick="addBeer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addRatingBar" />
+
+    </android.support.v7.widget.CardView>
+
 
 </android.support.constraint.ConstraintLayout>
