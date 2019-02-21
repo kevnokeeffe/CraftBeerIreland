@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,13 +17,13 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-
+        <!--@dimen/logo_w_h-->
         <ImageView
-            android:layout_width="@dimen/logo_w_h"
-            android:layout_height="@dimen/logo_w_h"
+            android:layout_width="@dimen/logo_w"
+            android:layout_height="@dimen/logo_h"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:src="@drawable/save_beer_two" />
+            android:src="@drawable/cbi2" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -65,15 +66,15 @@
             android:text="@string/btn_login"
             android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/btn_reset_password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="@string/btn_forgot_password"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent" />
+        <!--<Button-->
+            <!--android:id="@+id/btn_reset_password"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="20dip"-->
+            <!--android:background="@null"-->
+            <!--android:text="@string/btn_forgot_password"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/colorAccent" />-->
 
         <!-- Link to Login Screen -->
 
