@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.craftbeerireland.activities.Add">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AddFragment">
 
     <TextView
         android:id="@+id/addNameTV"
@@ -126,18 +123,16 @@
         app:layout_constraintTop_toBottomOf="@+id/addRatingBar">
 
 
-    <ImageButton
-        android:id="@+id/addBeerBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/save_button"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addRatingBar" />
+        <ImageButton
+            android:id="@+id/addBeerBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/save_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addRatingBar" />
 
     </android.support.v7.widget.CardView>
-
 
 </android.support.constraint.ConstraintLayout>

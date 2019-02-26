@@ -15,8 +15,10 @@ import android.widget.Spinner;
 
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.adapters.BeerFilter;
+import ie.craftbeerireland.models.CraftBeer;
 
-public class SearchFragment extends CraftBeerFragment implements AdapterView.OnItemSelectedListener{
+public class SearchFragment extends CraftBeerFragment
+        implements AdapterView.OnItemSelectedListener {
 
     String selected;
     SearchView searchView;
@@ -33,20 +35,30 @@ public class SearchFragment extends CraftBeerFragment implements AdapterView.OnI
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(R.layout.search_fragment, container, false);
+        getActivity().setTitle(R.string.searchBeerLbl);
+        listView = v.findViewById(R.id.searchList); //Bind to the list on our Search layout
+        setListView(v);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
-                .createFromResource(activity, R.array.beerTypes,
+                .createFromResource(getActivity(), R.array.beerTypes,
                         android.R.layout.simple_spinner_item);
 
         spinnerAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        Spinner spinner = activity.findViewById(R.id.searchSpinner);
+        Spinner spinner = v.findViewById(R.id.searchSpinner);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
 
-        searchView = activity.findViewById(R.id.searchView);
-        searchView.setQueryHint("Search for your Beers Here");
+        searchView = v.findViewById(R.id.searchView);
+        searchView.setQueryHint("Search your Coffees Here");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -62,6 +74,8 @@ public class SearchFragment extends CraftBeerFragment implements AdapterView.OnI
                 return false;
             }
         });
+
+        return v;
     }
 
     @Override
@@ -100,10 +114,10 @@ public class SearchFragment extends CraftBeerFragment implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> parent) { }
 
-    @Override
-    public void deleteBeers(ActionMode actionMode) {
-        super.deleteBeers(actionMode);
-        checkSelected(selected);
-    }
+//    @Override
+//    public void deleteBeers(ActionMode actionMode) {
+//        super.deleteBeers(actionMode);
+//        checkSelected(selected);
+//    }
 
 }

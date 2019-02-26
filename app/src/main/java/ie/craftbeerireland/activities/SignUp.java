@@ -52,7 +52,7 @@ public class SignUp extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUp.this, Login.class));
+                startActivity(new Intent(SignUp.this, Home.class));
                 finish();
             }
         });
@@ -85,7 +85,7 @@ public class SignUp extends AppCompatActivity {
                         .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignUp.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
@@ -94,7 +94,7 @@ public class SignUp extends AppCompatActivity {
                                     Toast.makeText(SignUp.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(SignUp.this, Login.class));
+                                    startActivity(new Intent(SignUp.this, Home.class));
                                     finish();
                                 }
                             }

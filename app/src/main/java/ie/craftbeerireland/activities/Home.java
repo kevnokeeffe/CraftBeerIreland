@@ -5,21 +5,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import ie.craftbeerireland.R;
+import ie.craftbeerireland.fragments.AddFragment;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
+import ie.craftbeerireland.fragments.EditFragment;
+import ie.craftbeerireland.fragments.SearchFragment;
 import ie.craftbeerireland.models.CraftBeer;
 
 
-public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
+        EditFragment.OnFragmentInteractionListener {
 
-    TextView emptyList;
+    //TextView emptyList;
+    FragmentTransaction fragT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +37,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        emptyList = findViewById(R.id.emptyList);
+        //emptyList = findViewById(R.id.emptyList);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -39,6 +47,12 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        fragT = getSupportFragmentManager().beginTransaction();
+
+        CraftBeerFragment fragment = CraftBeerFragment.newInstance();
+        fragT.replace(R.id.fragment_container, fragment);
+        fragT.commit();
 
         if(app.beerList.isEmpty()) setupBeers();
     }
@@ -51,14 +65,10 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             drawer.closeDrawer(GravityCompat.START);
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you want to go back to the Login screen?")
+                    .setMessage("Are you sure you want to close the app?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            //Home.this.finish();
-                            Intent intent = new Intent(getApplicationContext(), Login.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
                             Home.this.finish();
                         }
                     })
@@ -90,16 +100,38 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_add) {
+        Fragment fragment;
+        fragT = getSupportFragmentManager().beginTransaction();
 
-            Intent intent = new Intent(getApplicationContext(), Add.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-           ;
+        if (id == R.id.nav_home) {
+
+            this.setTitle(R.string.recentlyViewedLbl);
+            fragment = CraftBeerFragment.newInstance();
+            //((CoffeeFragment)fragment).favourites = false;
+            fragT.replace(R.id.fragment_container, fragment);
+            fragT.addToBackStack(null);
+            fragT.commit();
+
+        } else if (id == R.id.nav_add) {
+
+            this.setTitle(R.string.addABeerLbl);
+            fragment = AddFragment.newInstance();
+            fragT.replace(R.id.fragment_container, fragment);
+            fragT.addToBackStack(null);
+            fragT.commit();
+//            Intent intent = new Intent(getApplicationContext(), Add.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+
         } else if (id == R.id.nav_search) {
-            Intent intent = new Intent(getApplicationContext(), Search.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            fragment = SearchFragment.newInstance();
+            //((CraftBeerFragment)fragment).favourites = false;
+            fragT.replace(R.id.fragment_container, fragment);
+            fragT.addToBackStack(null);
+            fragT.commit();
+//            Intent intent = new Intent(getApplicationContext(), Search.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
 
         } else if (id == R.id.nav_favourites) {
             Intent intent = new Intent(getApplicationContext(), Favourites.class);
@@ -130,9 +162,27 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         app.beerList.add(new CraftBeer("Moonbeam","Metalman",4.0,5.50,false));
         app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
         app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("Yellow Belly","Grady's Yard",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("Moonbeam","Metalman",4.0,5.50,false));
-        app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
-        app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
+        app.beerList.add(new CraftBeer("Yellow Moon","Grady's Yard",4.5,5.50,true));
+        app.beerList.add(new CraftBeer("Sunbeam","Metalman",4.0,5.50,false));
+        app.beerList.add(new CraftBeer("Monkey Juce","Tully's",4.5,5.50,false));
+        app.beerList.add(new CraftBeer("22 Acres","An Uisce Beatha",4.5,5.50,true));
+    }
+
+    @Override
+    public void toggle(View v) {
+        EditFragment editFrag = (EditFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (editFrag != null) {
+            editFrag.toggle(v);
+        }
+    }
+
+    @Override
+    public void saveCraftBeer(View v) {
+        EditFragment editFrag = (EditFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (editFrag != null) {
+            editFrag.saveCraftBeer(v);
+        }
     }
 }

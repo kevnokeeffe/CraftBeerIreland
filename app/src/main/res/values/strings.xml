@@ -13,7 +13,7 @@
     <string name="developer">Developed by Kevin O Keeffe</string>
 
     <string name="searchBeerLbl">Search Beer\'s</string>
-    <string name="favouritesCoffeeLbl">Favourite Beer\'s</string>
+    <string name="favouritesBeerLbl">Favourite Beer\'s</string>
     <string name="addABeerLbl">Beer Check In</string>
     <string name="addBeerBtnLbl">Add Beer</string>
     <string name="saveBeerBtn">Save Beer</string>
@@ -27,7 +27,7 @@
     <string name="emptyMessageLbl">You have no Beer\'s added, go have a beer!</string>
     <string name="placeHolder">Placeholder</string>
     <string name="deleteCoffeesLbl">Delete</string>
-
+    <string name="editBeerLbl">Edit Beer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="beerTypes">

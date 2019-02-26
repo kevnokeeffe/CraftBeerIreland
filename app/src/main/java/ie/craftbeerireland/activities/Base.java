@@ -41,6 +41,7 @@ public class Base extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     public void menuInfo(MenuItem m) {

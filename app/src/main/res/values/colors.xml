@@ -3,6 +3,7 @@
     <color name="colorPrimary">#415225</color>
     <color name="colorPrimaryDark">#3c3734</color>
     <color name="colorAccent">#E4982D</color>
+    <color name="colorCardList">#FFFFFF</color>
     <color name="colorFontWhite">#ffffff</color>
     <color name="colorFontOffWhite">#f7f7f7</color>
     <color name="colorFontBlack">#000000</color>
@@ -11,7 +12,8 @@
     <color name="colourRedFont">#CD5C5C</color>
     <color name="colorCardShadow">#CD5C5C</color>
     <color name="colorLoginBackground">#638337</color>
-    <color name="bg_login">#26ae90</color>
+    <color name="colorBackgroundMain">#638337</color>
+    <color name="bg_login">#495F28</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>
     <color name="white">#ffffff</color>

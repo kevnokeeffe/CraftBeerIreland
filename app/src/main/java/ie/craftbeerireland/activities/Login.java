@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    private Button btnSignup, btnLogin; //btnReset;
+    private Button btnSignup, btnLogin, btnHome; //btnReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,8 @@ public class Login extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnSignup = (Button) findViewById(R.id.btn_signup);
         btnLogin = (Button) findViewById(R.id.btn_login);
+        btnHome = (Button) findViewById(R.id.btn_home);
+
         //btnReset = (Button) findViewById(R.id.btn_reset_password);
 
         //Get Firebase auth instance
@@ -66,6 +68,17 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //Bypass button***************************************************************
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Home.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+        //*******************************************************************************
 //        btnReset.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -137,5 +150,8 @@ public class Login extends AppCompatActivity {
                     .show();
         }
 
+    public void homePressed(View v){
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+    }
 
 }
