@@ -5,7 +5,7 @@
     <string name="nav_header_title">Craft Beer Ireland</string>
     <string name="nav_header_subtitle">www.craftBeerIreland.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_info">Info</string>
     <string name="appDesc">Craft Beer Ireland provides the user with a quick and easy way to manage a list of Craft Beers and your favourite Craft Bars.</string>
     <string name="appMoreInfo">For more information about Craft Beer Ireland or to provide feedback please visit our website.</string>
     <string name="appAbout">About Craft Beer Ireland</string>
@@ -26,7 +26,7 @@
     <string name="informationLbl">Information</string>
     <string name="emptyMessageLbl">You have no Beer\'s added, go have a beer!</string>
     <string name="placeHolder">Placeholder</string>
-    <string name="deleteCoffeesLbl">Delete</string>
+    <string name="deleteBeersLbl">Delete</string>
     <string name="editBeerLbl">Edit Beer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -50,7 +50,7 @@
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="hint_name">Fullname</string>
+    <string name="hint_name">Full Name</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_link_to_register">Not a member? Get registered now!</string>
     <string name="btn_link_to_login">Already registered. Login In!</string>

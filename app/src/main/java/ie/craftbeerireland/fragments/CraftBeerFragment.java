@@ -3,10 +3,8 @@ package ie.craftbeerireland.fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,11 +22,8 @@ import java.util.Random;
 
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.activities.Base;
-import ie.craftbeerireland.activities.Edit;
-import ie.craftbeerireland.activities.Favourites;
 import ie.craftbeerireland.adapters.BeerFilter;
 import ie.craftbeerireland.adapters.BeerListAdapter;
-import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
 
 public class CraftBeerFragment  extends Fragment implements
@@ -48,7 +43,7 @@ public class CraftBeerFragment  extends Fragment implements
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Bundle activityInfo = new Bundle(); // Creates a new Bundle object
+        Bundle activityInfo = new Bundle();
         activityInfo.putString("beerId", (String) view.getTag());
 
         Fragment fragment = EditFragment.newInstance(activityInfo);
@@ -82,19 +77,18 @@ public class CraftBeerFragment  extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, parent, false);
-        getActivity().setTitle(R.string.recentlyViewedLbl);
+        getActivity().setTitle(R.string.app_name);
         listAdapter = new BeerListAdapter(activity, this, activity.app.beerList);
         beerFilter = new BeerFilter(activity.app.beerList,"all",listAdapter);
 
         if (favourites) {
             getActivity().setTitle(R.string.favouritesBeerLbl);
-            beerFilter.setFilter("favourites"); // Set the filter text field from 'all' to 'favourites'
-            beerFilter.filter(null); // Filter the data, but don't use any prefix
-            listAdapter.notifyDataSetChanged(); // Update the adapter
+            beerFilter.setFilter("favourites");
+            beerFilter.filter(null);
+            listAdapter.notifyDataSetChanged();
         }
-        // setRandomCoffee();
+
 
         listView = v.findViewById(R.id.homeList);
 
@@ -138,10 +132,9 @@ public class CraftBeerFragment  extends Fragment implements
         {
             public void onClick(DialogInterface dialog, int id)
             {
-                activity.app.beerList.remove(beer); // remove from our list
-                listAdapter.beerList.remove(beer); // update adapters data
-                setRandomCoffee();
-                listAdapter.notifyDataSetChanged(); // refresh adapter
+                activity.app.beerList.remove(beer);
+                listAdapter.beerList.remove(beer);
+                listAdapter.notifyDataSetChanged();
             }
         }).setNegativeButton("No", new DialogInterface.OnClickListener()
         {
@@ -154,7 +147,6 @@ public class CraftBeerFragment  extends Fragment implements
         alert.show();
     }
 
-    /* ************ MultiChoiceModeListener methods (begin) *********** */
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu)
     {
@@ -192,37 +184,11 @@ public class CraftBeerFragment  extends Fragment implements
                     listAdapter.beerList.remove(listAdapter.getItem(i));
             }
         }
-        setRandomCoffee();
-        listAdapter.notifyDataSetChanged(); // refresh adapter
 
+        listAdapter.notifyDataSetChanged();
         actionMode.finish();
     }
 
-    public void setRandomCoffee() {
-
-        ArrayList<CraftBeer> coffeeList = new ArrayList<>();
-
-        for(CraftBeer c : activity.app.beerList)
-            if (c.favourite)
-                coffeeList.add(c);
-
-        if (favourites)
-            if( !coffeeList.isEmpty()) {
-                CraftBeer randomBeer = coffeeList.get(new Random()
-                        .nextInt(coffeeList.size()));
-
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerName)).setText(randomBeer.beerName);
-                ((TextView) getActivity().findViewById(R.id.favouriteCraftBar)).setText(randomBeer.craftBar);
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerPrice)).setText("€ " + randomBeer.price);
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerRating)).setText(randomBeer.rating + " *");
-            }
-            else {
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerName)).setText("N/A");
-                ((TextView) getActivity().findViewById(R.id.favouriteCraftBar)).setText("N/A");
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerPrice)).setText("N/A");
-                ((TextView) getActivity().findViewById(R.id.favouriteBeerRating)).setText("N/A");
-            }
-    }
 
     @Override
     public void onDestroyActionMode(ActionMode actionMode)
@@ -232,5 +198,4 @@ public class CraftBeerFragment  extends Fragment implements
     public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
     }
 
-    /* ************ MultiChoiceModeListener methods (end) *********** */
 }

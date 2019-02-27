@@ -53,7 +53,7 @@ public class Base extends AppCompatActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // we could put some code here too
+
                     }
                 })
                 .show();

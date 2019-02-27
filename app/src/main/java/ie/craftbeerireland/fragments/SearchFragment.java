@@ -44,7 +44,7 @@ public class SearchFragment extends CraftBeerFragment
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.search_fragment, container, false);
         getActivity().setTitle(R.string.searchBeerLbl);
-        listView = v.findViewById(R.id.searchList); //Bind to the list on our Search layout
+        listView = v.findViewById(R.id.searchList);
         setListView(v);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
                 .createFromResource(getActivity(), R.array.beerTypes,
@@ -114,10 +114,5 @@ public class SearchFragment extends CraftBeerFragment
     @Override
     public void onNothingSelected(AdapterView<?> parent) { }
 
-//    @Override
-//    public void deleteBeers(ActionMode actionMode) {
-//        super.deleteBeers(actionMode);
-//        checkSelected(selected);
-//    }
 
 }

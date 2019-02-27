@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#415225</color>
+    <color name="colorPrimary2">#E4982D</color>
     <color name="colorPrimaryDark">#3c3734</color>
     <color name="colorAccent">#E4982D</color>
     <color name="colorCardList">#FFFFFF</color>
@@ -12,7 +13,8 @@
     <color name="colourRedFont">#CD5C5C</color>
     <color name="colorCardShadow">#CD5C5C</color>
     <color name="colorLoginBackground">#638337</color>
-    <color name="colorBackgroundMain">#638337</color>
+    <color name="colorTodo">#638337</color>
+    <color name="colorBackgroundMain">#EFF5E0</color>
     <color name="bg_login">#495F28</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>

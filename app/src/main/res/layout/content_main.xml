@@ -10,18 +10,6 @@
     android:background="@color/colorBackgroundMain"
     tools:showIn="@layout/app_bar_main">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/main_image"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:contentDescription="image"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:srcCompat="@drawable/wishbeer" />-->
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -35,31 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
-        <!--<ImageView-->
-        <!--android:id="@+id/imageView2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="10dp"-->
-        <!--android:scaleType="fitXY"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/main_image"-->
-        <!--app:srcCompat="@drawable/bariner"-->
-        <!--tools:layout_editor_absoluteX="0dp" />-->
-
-
-        <!--<TextView-->
-            <!--android:id="@+id/emptyList"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:text="@string/emptyMessageLbl"-->
-            <!--android:textSize="12sp"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintHorizontal_bias="0.576"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:layout_constraintVertical_bias="0.533" />-->
 
     </FrameLayout>
 

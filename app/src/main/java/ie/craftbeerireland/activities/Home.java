@@ -26,7 +26,6 @@ import ie.craftbeerireland.models.CraftBeer;
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
         EditFragment.OnFragmentInteractionListener {
 
-    //TextView emptyList;
     FragmentTransaction fragT;
 
     @Override
@@ -36,8 +35,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //emptyList = findViewById(R.id.emptyList);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,11 +62,14 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             drawer.closeDrawer(GravityCompat.START);
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you want to close the app?")
+                    .setMessage("Are you sure you want to go back to the login screen?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Home.this.finish();
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    Home.this.finish();
                         }
                     })
                     .setNegativeButton("No", null)
@@ -107,7 +107,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
             this.setTitle(R.string.recentlyViewedLbl);
             fragment = CraftBeerFragment.newInstance();
-            //((CoffeeFragment)fragment).favourites = false;
             fragT.replace(R.id.fragment_container, fragment);
             fragT.addToBackStack(null);
             fragT.commit();
@@ -119,25 +118,12 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             fragT.replace(R.id.fragment_container, fragment);
             fragT.addToBackStack(null);
             fragT.commit();
-//            Intent intent = new Intent(getApplicationContext(), Add.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
 
         } else if (id == R.id.nav_search) {
             fragment = SearchFragment.newInstance();
-            //((CraftBeerFragment)fragment).favourites = false;
             fragT.replace(R.id.fragment_container, fragment);
             fragT.addToBackStack(null);
             fragT.commit();
-//            Intent intent = new Intent(getApplicationContext(), Search.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-
-        } else if (id == R.id.nav_favourites) {
-            Intent intent = new Intent(getApplicationContext(), Favourites.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -163,8 +149,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
         app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
         app.beerList.add(new CraftBeer("Yellow Moon","Grady's Yard",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("Sunbeam","Metalman",4.0,5.50,false));
-        app.beerList.add(new CraftBeer("Monkey Juce","Tully's",4.5,5.50,false));
         app.beerList.add(new CraftBeer("22 Acres","An Uisce Beatha",4.5,5.50,true));
     }
 

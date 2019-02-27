@@ -21,7 +21,6 @@ public class CraftBeerItem {
     {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        // TODO: 12/02/2019 TWO
         view = inflater.inflate(R.layout.craft_beer_card, parent, false);
         view.setTag(craftBeer.beerId);
         updateControls(craftBeer);
