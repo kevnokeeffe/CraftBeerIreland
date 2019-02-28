@@ -76,12 +76,13 @@ public class SignUp extends AppCompatActivity {
                         .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignUp.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignUp.this, "Authentication failed." + task.getException(),
+                                    Toast.makeText(SignUp.this, "Authentication failed. Input a valid E-mail",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Toast.makeText(SignUp.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(SignUp.this, Home.class));
                                     finish();
                                 }

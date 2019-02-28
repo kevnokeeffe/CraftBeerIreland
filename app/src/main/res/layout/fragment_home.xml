@@ -12,13 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/emptyMessageLbl"
-        android:textSize="12sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorFontBlack"
+
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.500" />
 
     <ListView
         android:id="@+id/homeList"

@@ -9,6 +9,12 @@
         android:onClick="menuInfo"
         app:showAsAction="never" />
 
+    <item android:id="@+id/menu_logout"
+        android:title="Log Out"
+        android:orderInCategory="100"
+        android:onClick="menuLogOut"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/menu_home"
         android:icon="@drawable/cb_logo_v6"

@@ -64,13 +64,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             drawer.closeDrawer(GravityCompat.START);
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you want to go back to the login screen?")
+                    .setMessage("Are you sure you want to Quit?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+
                     Home.this.finish();
                         }
                     })
