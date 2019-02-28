@@ -117,15 +117,15 @@ public class CraftBeerFragment  extends Fragment implements
     {
         if (view.getTag() instanceof CraftBeer)
         {
-            onCoffeeDelete ((CraftBeer) view.getTag());
+            onBeerDelete ((CraftBeer) view.getTag());
         }
     }
 
-    public void onCoffeeDelete(final CraftBeer beer)
+    public void onBeerDelete(final CraftBeer beer)
     {
         String stringName = beer.beerName;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage("Are you sure you want to Delete the \'Coffee\' " + stringName + "?");
+        builder.setMessage("Are you sure you want to Delete the \'Beer\' " + stringName + "?");
         builder.setCancelable(false);
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
@@ -166,14 +166,14 @@ public class CraftBeerFragment  extends Fragment implements
         switch (menuItem.getItemId())
         {
             case R.id.menu_item_delete_beer:
-                deleteCoffees(actionMode);
+                deleteBeers(actionMode);
                 return true;
             default:
                 return false;
         }
     }
 
-    public void deleteCoffees(ActionMode actionMode)
+    public void deleteBeers(ActionMode actionMode)
     {
         for (int i = listAdapter.getCount() -1 ; i >= 0; i--)
         {

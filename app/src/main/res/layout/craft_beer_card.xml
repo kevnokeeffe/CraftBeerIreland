@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:outlineSpotShadowColor="@color/colorCardShadow"
-        app:cardBackgroundColor="@color/colorCardList"
+        android:outlineSpotShadowColor="@color/white"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,9 +24,9 @@
 
             android:id="@+id/cardviewlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="75dp"
 
-            android:background="@drawable/background_activated">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/rowFavouriteImg"
@@ -41,7 +40,7 @@
                 android:layout_marginBottom="8dp"
                 android:contentDescription="fav"
                 android:gravity="center_vertical"
-                android:src="@drawable/tumbs_off" />
+                android:src="@drawable/tumbs_on" />
 
             <ImageView
                 android:id="@+id/rowDeleteImg"
@@ -65,7 +64,7 @@
                 android:layout_marginStart="68dp"
                 android:gravity="center_vertical"
                 android:text="Beer Name"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -77,7 +76,7 @@
                 android:layout_alignBottom="@+id/rowFavouriteImg"
                 android:gravity="center_vertical"
                 android:text="Bar Name"
-                android:textColor="@color/colorFontBlack"
+                android:textColor="@color/colorAccent"
                 android:textSize="11sp"
                 android:textStyle="bold" />
 
@@ -90,7 +89,7 @@
                 android:layout_marginEnd="71dp"
                 android:gravity="center_vertical"
                 android:text="5.0 *"
-                android:textColor="@color/colorFontBlack"
+                android:textColor="@color/colorAccent"
                 android:textSize="11sp"
                 android:textStyle="bold" />
 
@@ -105,7 +104,7 @@
 
                 android:gravity="center_vertical"
                 android:text="€3.99"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </RelativeLayout>

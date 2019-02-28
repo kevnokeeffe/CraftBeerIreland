@@ -3,6 +3,7 @@ package ie.craftbeerireland.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -87,7 +89,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_info) {
             return true;
         }
 

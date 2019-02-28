@@ -23,7 +23,7 @@ import ie.craftbeerireland.R;
 public class SignUp extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private Button btnSignIn, btnSignUp;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
@@ -39,19 +39,11 @@ public class SignUp extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        //btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
-
-//        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //startActivity(new Intent(SignUp.this, ResetPasswordActivity.class));
-//            }
-//        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUp.this, Home.class));
+                startActivity(new Intent(SignUp.this, Login.class));
                 finish();
             }
         });
@@ -79,7 +71,7 @@ public class SignUp extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-                //create user
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                             @Override
