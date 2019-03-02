@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -23,12 +24,15 @@ import ie.craftbeerireland.models.CraftBeer;
 
 public class AddFragment extends Fragment {
 
+
+
     private String 		beerName, craftBar;
     private double 		beerPrice, ratingValue;
     private EditText name, craftbar, price;
     private RatingBar ratingBar;
     private ImageButton saveButton;
     private CraftBeerIreland app;
+
 
     public AddFragment() {
         // Required empty public constructor
@@ -43,9 +47,7 @@ public class AddFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         app = (CraftBeerIreland) getActivity().getApplication();
-
     }
 
     @Override
@@ -59,10 +61,15 @@ public class AddFragment extends Fragment {
         price =  v.findViewById(R.id.addPriceET);
         ratingBar =  v.findViewById(R.id.addRatingBar);
         saveButton = v.findViewById(R.id.addBeerBtn);
+
+
+
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addBeer();
+
             }
         });
 
@@ -102,4 +109,6 @@ public class AddFragment extends Fragment {
             if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
+
+
 }

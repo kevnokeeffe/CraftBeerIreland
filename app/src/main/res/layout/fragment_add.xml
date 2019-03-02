@@ -182,6 +182,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/addRatingBar" />
 
             </android.support.v7.widget.CardView>
+
 </RelativeLayout>
 
 

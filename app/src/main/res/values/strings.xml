@@ -10,7 +10,6 @@
     <string name="appMoreInfo">For more information about Craft Beer Ireland or to provide feedback please visit our website.</string>
     <string name="appAbout">About Craft Beer Ireland</string>
     <string name="developer">Developed by Kevin O Keeffe</string>
-
     <string name="searchBeerLbl">Search Beer\'s</string>
     <string name="favouritesBeerLbl">Favourite Beer\'s</string>
     <string name="addABeerLbl">Beer Check In</string>
@@ -31,7 +30,7 @@
     <string-array name="beerTypes">
         <item>All Types</item>
         <item>Favourites</item>
-        <item>\> 3\* Rating</item>
+
     </string-array>
 
 
@@ -44,7 +43,6 @@
     <string name="send_password_reset_email">Send Password reset email</string>
     <string name="remove_user">Remove user</string>
     <string name="new_pass">New Password</string>
-
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>

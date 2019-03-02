@@ -101,18 +101,12 @@ public class SignUp extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setMessage("Changed your mind? Don't want to sign up?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+
                         Intent intent = new Intent(getApplicationContext(), Login.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         SignUp.this.finish();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
+
+
     }
 }

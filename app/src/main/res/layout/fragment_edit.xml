@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.EditFragment"
-    android:screenOrientation="portrait">
+    >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -44,11 +44,12 @@
                 android:id="@+id/editFavourite"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_below="@+id/editRatingBar"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="30dp"
-                android:onClick="toggle"
+                android:layout_marginStart="48dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:onClick="toggle"
                 android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/tumbs_off"
@@ -164,20 +165,23 @@
                 android:id="@+id/editBeerBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/editRatingBar"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginRight="55dp"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editRatingBar">
+                app:layout_constraintTop_toBottomOf="@+id/editRatingBar"
+                android:layout_marginBottom="20dp">
 
                 <ImageButton
                     android:id="@+id/addBeer"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_alignStart="@+id/editBeerBtn"
                     android:background="@drawable/save_button"
                     android:onClick="saveCraftBeer" />
             </android.support.v7.widget.CardView>

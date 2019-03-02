@@ -25,19 +25,28 @@
         app:layout_constraintTop_toTopOf="@+id/searchList"
         app:layout_constraintVertical_bias="0.24" />
 
-
-    <Spinner
-        android:id="@+id/searchSpinner"
-        android:layout_width="200dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
+    <RelativeLayout
+        android:id="@+id/spinnerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
 
+        <Spinner
+            android:id="@+id/searchSpinner"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
@@ -65,6 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLayout" />
 
 </android.support.constraint.ConstraintLayout>
