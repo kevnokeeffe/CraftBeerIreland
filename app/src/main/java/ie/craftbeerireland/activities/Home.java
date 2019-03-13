@@ -2,7 +2,6 @@ package ie.craftbeerireland.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,12 +10,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import ie.craftbeerireland.R;
+import ie.craftbeerireland.adapters.RecyclerViewAdapter;
 import ie.craftbeerireland.fragments.AddFragment;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
 import ie.craftbeerireland.fragments.EditFragment;
@@ -26,6 +27,10 @@ import ie.craftbeerireland.models.CraftBeer;
 
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
         EditFragment.OnFragmentInteractionListener {
+
+    //TODO Recycler View!!
+   // RecyclerView recyclerView;
+
 
     FragmentTransaction fragT;
 
@@ -54,6 +59,11 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         fragT.commit();
 
         if(app.beerList.isEmpty()) setupBeers();
+
+        //TODO The recycler view!!
+        //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setAdapter(new RecyclerViewAdapter(this, app.beerList));
     }
 
 

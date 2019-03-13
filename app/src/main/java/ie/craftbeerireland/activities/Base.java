@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import ie.craftbeerireland.R;
@@ -22,6 +25,8 @@ public class Base extends AppCompatActivity {
     public Bundle activityInfo;
     public CraftBeerFragment craftBeerFragment;
     public CraftBeerIreland app;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +82,6 @@ public class Base extends AppCompatActivity {
                 .show();
     }
 
-    public void menuHelp(MenuItem m) {
-
-    }
 
 }
 

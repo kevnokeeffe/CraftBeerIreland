@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.activities.Home;
 import ie.craftbeerireland.main.CraftBeerIreland;
@@ -24,15 +29,18 @@ import ie.craftbeerireland.models.CraftBeer;
 
 public class AddFragment extends Fragment {
 
-
-
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+    String uniqueId = null;
     private String 		beerName, craftBar;
     private double 		beerPrice, ratingValue;
     private EditText name, craftbar, price;
     private RatingBar ratingBar;
     private ImageButton saveButton;
     private CraftBeerIreland app;
+    private DatabaseReference mDatabase;
 
+    DatabaseReference beersRef = ref.child("beers");
 
     public AddFragment() {
         // Required empty public constructor
@@ -48,6 +56,8 @@ public class AddFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         app = (CraftBeerIreland) getActivity().getApplication();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
@@ -77,7 +87,9 @@ public class AddFragment extends Fragment {
     }
 
     public void addBeer() {
+        uniqueId = UUID.randomUUID().toString();
         beerName = name.getText().toString();
+
         craftBar = craftbar.getText().toString();
         try {
             beerPrice = Double.parseDouble(price.getText().toString());
@@ -90,8 +102,8 @@ public class AddFragment extends Fragment {
                 && (price.length() > 0)) {
             CraftBeer c = new CraftBeer(beerName, craftBar, ratingValue,
                     beerPrice, false);
-
             app.beerList.add(c);
+            mDatabase.child("userID").child("beers").child(uniqueId).setValue(app.beerList);
             startActivity(new Intent(this.getActivity(), Home.class));
         } else
             Toast.makeText(
@@ -99,6 +111,7 @@ public class AddFragment extends Fragment {
                     "You must Enter Something for "
                             + "\'Name\', \'Bar\' and \'Price\'",
                     Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

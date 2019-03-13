@@ -19,7 +19,7 @@ public class BeerListAdapter extends ArrayAdapter<CraftBeer> {
 
     public BeerListAdapter(Context context, View.OnClickListener deleteListener, List<CraftBeer> beerList)
     {
-        super(context, R.layout.beer_row, beerList);
+        super(context, R.layout.craft_beer_card, beerList);
 
         this.context = context;
         this.deleteListener = deleteListener;
