@@ -29,8 +29,6 @@ import ie.craftbeerireland.models.CraftBeer;
 
 public class AddFragment extends Fragment {
 
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("server/saving-data/fireblog");
     String uniqueId = null;
     private String 		beerName, craftBar;
     private double 		beerPrice, ratingValue;
@@ -40,7 +38,7 @@ public class AddFragment extends Fragment {
     private CraftBeerIreland app;
     private DatabaseReference mDatabase;
 
-    DatabaseReference beersRef = ref.child("beers");
+
 
     public AddFragment() {
         // Required empty public constructor
@@ -56,7 +54,7 @@ public class AddFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         app = (CraftBeerIreland) getActivity().getApplication();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Database");
 
     }
 
@@ -102,8 +100,11 @@ public class AddFragment extends Fragment {
                 && (price.length() > 0)) {
             CraftBeer c = new CraftBeer(beerName, craftBar, ratingValue,
                     beerPrice, false);
-            app.beerList.add(c);
-            mDatabase.child("userID").child("beers").child(uniqueId).setValue(app.beerList);
+            //app.beerList.add(c);
+
+            mDatabase.child("userId").child("beers").child(uniqueId).setValue(c);
+            mDatabase.push();
+
             startActivity(new Intent(this.getActivity(), Home.class));
         } else
             Toast.makeText(
