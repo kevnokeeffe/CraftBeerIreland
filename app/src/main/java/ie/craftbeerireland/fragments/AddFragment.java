@@ -85,7 +85,7 @@ public class AddFragment extends Fragment {
     }
 
     public void addBeer() {
-        uniqueId = UUID.randomUUID().toString();
+
         beerName = name.getText().toString();
 
         craftBar = craftbar.getText().toString();
@@ -102,7 +102,7 @@ public class AddFragment extends Fragment {
                     beerPrice, false);
             //app.beerList.add(c);
 
-            mDatabase.child("userId").child("beers").child(uniqueId).setValue(c);
+            mDatabase.setValue(c);
             mDatabase.push();
 
             startActivity(new Intent(this.getActivity(), Home.class));

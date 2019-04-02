@@ -17,7 +17,7 @@ public class CraftBeer implements Serializable {
 
     public CraftBeer( String name, String bar, double rating, double price, boolean fav)
     {
-        this.beerId = UUID.randomUUID().toString();
+
         this.beerName = name;
         this.craftBar = bar;
         this.rating = rating;
@@ -27,7 +27,7 @@ public class CraftBeer implements Serializable {
 
     @Override
     public String toString() {
-        return beerId + "" +beerName + ", " + craftBar + ", " + rating
+        return  beerName + ", " + craftBar + ", " + rating
                 + ", " + price + ", fav =" + favourite;
     }
 }

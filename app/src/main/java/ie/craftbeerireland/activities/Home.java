@@ -1,9 +1,11 @@
 package ie.craftbeerireland.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,35 +15,81 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.adapters.RecyclerViewAdapter;
 import ie.craftbeerireland.fragments.AddFragment;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
 import ie.craftbeerireland.fragments.EditFragment;
 import ie.craftbeerireland.fragments.SearchFragment;
+import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
+
+import static android.os.Build.ID;
 
 
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
         EditFragment.OnFragmentInteractionListener {
 
-    //TODO Recycler View!!
-   // RecyclerView recyclerView;
+        TextView beer, price, bar, rating;
+        ImageView fav;
 
 
-    FragmentTransaction fragT;
+
+        private DatabaseReference myRef;
+        private FirebaseDatabase database;
+        public List<CraftBeer> beerList;
+        //TODO Recycler View!!
+        // RecyclerView recyclerView;
+        CraftBeerIreland app = new CraftBeerIreland();
+        CraftBeer craftBeer;
+        FragmentTransaction fragT;
+        ArrayAdapter<String> arrayAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        app.user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.i("user",app.user.toString());
 
+        //getting database instance
+        database = FirebaseDatabase.getInstance();
+
+        //getting the refrence from the database
+        myRef = database.getReference("Database");
+
+        // instantiating the beer array list
+        beerList = new ArrayList<CraftBeer>();
+        beer = findViewById(R.id.rowBeerName);
+        price = findViewById(R.id.rowPrice);
+        bar = findViewById(R.id.rowCraftBar);
+        rating = findViewById(R.id.rowRating);
+        fav = findViewById(R.id.rowFavouriteImg);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,12 +106,46 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         fragT.replace(R.id.fragment_container, fragment);
         fragT.commit();
 
-        if(app.beerList.isEmpty()) setupBeers();
+
+
+        //ValueEventListener messageListener = new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+
+                    craftBeer = dataSnapshot.getValue(CraftBeer.class);
+                    beerList.add(craftBeer);
+                    beer.setText(beerList);
+
+                    bar.setText(craftBeer.craftBar);
+                    rating.setText(craftBeer.rating + " *");
+                    price.setText("€" +
+                           new DecimalFormat("0.00").format(craftBeer.price));
+
+                    if (craftBeer.favourite == true)
+                        fav.setImageResource(R.drawable.tumbs_on);
+                    else
+                        fav.setImageResource(R.drawable.tumbs_neu);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Failed to read value
+            }
+        });
+
+       // database.addValueEventListener(messageListener);
+
 
         //TODO The recycler view!!
         //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.setAdapter(new RecyclerViewAdapter(this, app.beerList));
+
     }
 
 
@@ -153,13 +235,19 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
                 .commit();
     }
 
-    public void setupBeers(){
-        app.beerList.add(new CraftBeer("Yellow Belly","Grady's Yard",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("Moonbeam","Metalman",4.0,5.50,false));
-        app.beerList.add(new CraftBeer("Elvis Juce","Tully's",4.5,5.50,false));
-        app.beerList.add(new CraftBeer("12 Acres","An Uisce Beatha",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("Yellow Moon","Grady's Yard",4.5,5.50,true));
-        app.beerList.add(new CraftBeer("22 Acres","An Uisce Beatha",4.5,5.50,true));
+    public void setupBeers()
+    {
+
+        beer.setText("message one"+craftBeer.beerName);
+        bar.setText(craftBeer.craftBar);
+        rating.setText(craftBeer.rating + " *");
+        price.setText("€" +
+                new DecimalFormat("0.00").format(craftBeer.price));
+
+        if (craftBeer.favourite == true)
+            fav.setImageResource(R.drawable.tumbs_on);
+        else
+            fav.setImageResource(R.drawable.tumbs_neu);
     }
 
     @Override
@@ -179,4 +267,16 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             editFrag.saveCraftBeer(v);
         }
     }
+    
+    
+    public void dataSnapshot() {
+        super.onStart();
+
+
+
+    }
+
+
+
 }
+

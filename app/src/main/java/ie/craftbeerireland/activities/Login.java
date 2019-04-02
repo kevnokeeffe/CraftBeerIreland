@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ie.craftbeerireland.R;
+import ie.craftbeerireland.main.CraftBeerIreland;
 
 public class Login extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
