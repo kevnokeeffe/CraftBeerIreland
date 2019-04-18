@@ -100,16 +100,16 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
 
 
-        //ValueEventListener messageListener = new ValueEventListener() {
-        myRef.addValueEventListener(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if (dataSnapshot.exists()) {
-
-                    craftBeer = dataSnapshot.getValue(CraftBeer.class);
-                    beerList.add(craftBeer);
-                    app.beerList = beerList;
+//        //ValueEventListener messageListener = new ValueEventListener() {
+//        myRef.addValueEventListener(new ValueEventListener(){
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if (dataSnapshot.exists()) {
+//
+//                    craftBeer = dataSnapshot.getValue(CraftBeer.class);
+//                    beerList.add(craftBeer);
+//                    app.beerList = beerList;
 //                    beer.setText((CharSequence) beerList);
 
 //                    bar.setText(craftBeer.craftBar);
@@ -122,14 +122,14 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 //                    else
 //                        fav.setImageResource(R.drawable.tumbs_neu);
 
-                }
-            }
+//                }
+//            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Failed to read value
-            }
-        });
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Failed to read value
+//            }
+//        });
 
        // database.addValueEventListener(messageListener);
 

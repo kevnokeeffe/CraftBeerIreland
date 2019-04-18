@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import ie.craftbeerireland.R;
@@ -105,7 +106,7 @@ public class CraftBeerFragment  extends Fragment implements
         database = FirebaseDatabase.getInstance();
 
         //getting the refrence from the database
-        myRef = database.getReference("Database");
+        myRef = database.getReference("Database").child(activity.app.user.getUid()).child("beers");
         //ValueEventListener messageListener = new ValueEventListener() {
         myRef.addValueEventListener(new ValueEventListener(){
             @Override
@@ -114,6 +115,13 @@ public class CraftBeerFragment  extends Fragment implements
                 if (dataSnapshot.exists()) {
 //                    ArrayList craftBeers = dataSnapshot.getValue(ArrayList.class);
 //                   activity.app.beerList = craftBeers;
+                    List<CraftBeer> friends = new ArrayList<>();
+                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                        String friend = ds.getKey();
+                        CraftBeer beer = ds.getValue(CraftBeer.class);
+                        friends.add(beer);
+                    }
+                    activity.app.beerList = friends;
                     listAdapter.beerList = activity.app.beerList;
                     listAdapter.notifyDataSetChanged();
                 }

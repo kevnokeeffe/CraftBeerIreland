@@ -20,6 +20,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import ie.craftbeerireland.R;
@@ -101,9 +104,11 @@ public class AddFragment extends Fragment {
             CraftBeer c = new CraftBeer(beerName, craftBar, ratingValue,
                     beerPrice, false);
             //app.beerList.add(c);
-
-            mDatabase.setValue(c);
-            mDatabase.push();
+            DatabaseReference cineIndustryRef = mDatabase.child(app.user.getUid());
+//            Map<String, Object> map = new HashMap<>();
+//            map.put(key, c);
+            cineIndustryRef.child("beers").child(UUID.randomUUID().toString()).setValue(c);
+            cineIndustryRef.push();
 
             startActivity(new Intent(this.getActivity(), Home.class));
         } else
