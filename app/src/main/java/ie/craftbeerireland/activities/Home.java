@@ -2,6 +2,7 @@ package ie.craftbeerireland.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -49,28 +50,23 @@ import static android.os.Build.ID;
 
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
         EditFragment.OnFragmentInteractionListener {
-
-        TextView beer, price, bar, rating;
-        ImageView fav;
-
-
-
         private DatabaseReference myRef;
         private FirebaseDatabase database;
         public List<CraftBeer> beerList;
         //TODO Recycler View!!
         // RecyclerView recyclerView;
-        CraftBeerIreland app = new CraftBeerIreland();
+//        CraftBeerIreland app = new CraftBeerIreland();
         CraftBeer craftBeer;
         FragmentTransaction fragT;
         ArrayAdapter<String> arrayAdapter;
-
+        CraftBeerIreland app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.app = (CraftBeerIreland) getApplication();
         app.user = FirebaseAuth.getInstance().getCurrentUser();
         Log.i("user",app.user.toString());
 
@@ -82,11 +78,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         // instantiating the beer array list
         beerList = new ArrayList<CraftBeer>();
-        beer = findViewById(R.id.rowBeerName);
-        price = findViewById(R.id.rowPrice);
-        bar = findViewById(R.id.rowCraftBar);
-        rating = findViewById(R.id.rowRating);
-        fav = findViewById(R.id.rowFavouriteImg);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -102,8 +94,8 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
         fragT = getSupportFragmentManager().beginTransaction();
 
-        CraftBeerFragment fragment = CraftBeerFragment.newInstance();
-        fragT.replace(R.id.fragment_container, fragment);
+        craftBeerFragment = CraftBeerFragment.newInstance();
+        fragT.replace(R.id.fragment_container, craftBeerFragment);
         fragT.commit();
 
 
@@ -117,17 +109,18 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
 
                     craftBeer = dataSnapshot.getValue(CraftBeer.class);
                     beerList.add(craftBeer);
-                    beer.setText(beerList);
+                    app.beerList = beerList;
+//                    beer.setText((CharSequence) beerList);
 
-                    bar.setText(craftBeer.craftBar);
-                    rating.setText(craftBeer.rating + " *");
-                    price.setText("€" +
-                           new DecimalFormat("0.00").format(craftBeer.price));
+//                    bar.setText(craftBeer.craftBar);
+//                    rating.setText(craftBeer.rating + " *");
+//                    price.setText("€" +
+//                           new DecimalFormat("0.00").format(craftBeer.price));
 
-                    if (craftBeer.favourite == true)
-                        fav.setImageResource(R.drawable.tumbs_on);
-                    else
-                        fav.setImageResource(R.drawable.tumbs_neu);
+//                    if (craftBeer.favourite == true)
+//                        fav.setImageResource(R.drawable.tumbs_on);
+//                    else
+//                        fav.setImageResource(R.drawable.tumbs_neu);
 
                 }
             }
@@ -227,27 +220,10 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     protected void onResume() {
         super.onResume();
 
-
-
-        craftBeerFragment = CraftBeerFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, craftBeerFragment)
-                .commit();
-    }
-
-    public void setupBeers()
-    {
-
-        beer.setText("message one"+craftBeer.beerName);
-        bar.setText(craftBeer.craftBar);
-        rating.setText(craftBeer.rating + " *");
-        price.setText("€" +
-                new DecimalFormat("0.00").format(craftBeer.price));
-
-        if (craftBeer.favourite == true)
-            fav.setImageResource(R.drawable.tumbs_on);
-        else
-            fav.setImageResource(R.drawable.tumbs_neu);
+//        craftBeerFragment = CraftBeerFragment.newInstance();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fragment_container, craftBeerFragment)
+//                .commit();
     }
 
     @Override

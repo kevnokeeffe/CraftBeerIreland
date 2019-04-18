@@ -17,6 +17,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,7 +42,8 @@ public class CraftBeerFragment  extends Fragment implements
     public ListView listView;
     public BeerFilter beerFilter;
     public boolean favourites = false;
-
+    private DatabaseReference myRef;
+    private FirebaseDatabase database;
     public CraftBeerFragment() {
         // Required empty public constructor
     }
@@ -94,6 +101,29 @@ public class CraftBeerFragment  extends Fragment implements
 
         setListView(v);
 
+        //getting database instance
+        database = FirebaseDatabase.getInstance();
+
+        //getting the refrence from the database
+        myRef = database.getReference("Database");
+        //ValueEventListener messageListener = new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+//                    ArrayList craftBeers = dataSnapshot.getValue(ArrayList.class);
+//                   activity.app.beerList = craftBeers;
+                    listAdapter.beerList = activity.app.beerList;
+                    listAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Failed to read value
+            }
+        });
         return v;
     }
 
