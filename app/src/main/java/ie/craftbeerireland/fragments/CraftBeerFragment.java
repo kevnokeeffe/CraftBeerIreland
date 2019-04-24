@@ -107,14 +107,11 @@ public class CraftBeerFragment  extends Fragment implements
 
         //getting the refrence from the database
         myRef = database.getReference("Database").child(activity.app.user.getUid()).child("beers");
-        //ValueEventListener messageListener = new ValueEventListener() {
         myRef.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
-//                    ArrayList craftBeers = dataSnapshot.getValue(ArrayList.class);
-//                   activity.app.beerList = craftBeers;
                     List<CraftBeer> friends = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
                         String friend = ds.getKey();

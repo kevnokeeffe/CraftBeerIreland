@@ -1,44 +1,27 @@
 package ie.craftbeerireland.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import ie.craftbeerireland.R;
-import ie.craftbeerireland.adapters.RecyclerViewAdapter;
 import ie.craftbeerireland.fragments.AddFragment;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
 import ie.craftbeerireland.fragments.EditFragment;
@@ -47,17 +30,12 @@ import ie.craftbeerireland.fragments.SearchFragment;
 import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
 
-import static android.os.Build.ID;
-
 
 public class Home extends Base implements NavigationView.OnNavigationItemSelectedListener,
         EditFragment.OnFragmentInteractionListener {
         private DatabaseReference myRef;
         private FirebaseDatabase database;
         public List<CraftBeer> beerList;
-        //TODO Recycler View!!
-        // RecyclerView recyclerView;
-//        CraftBeerIreland app = new CraftBeerIreland();
         CraftBeer craftBeer;
         FragmentTransaction fragT;
         ArrayAdapter<String> arrayAdapter;
@@ -99,48 +77,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         craftBeerFragment = CraftBeerFragment.newInstance();
         fragT.replace(R.id.fragment_container, craftBeerFragment);
         fragT.commit();
-
-
-
-//        //ValueEventListener messageListener = new ValueEventListener() {
-//        myRef.addValueEventListener(new ValueEventListener(){
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                if (dataSnapshot.exists()) {
-//
-//                    craftBeer = dataSnapshot.getValue(CraftBeer.class);
-//                    beerList.add(craftBeer);
-//                    app.beerList = beerList;
-//                    beer.setText((CharSequence) beerList);
-
-//                    bar.setText(craftBeer.craftBar);
-//                    rating.setText(craftBeer.rating + " *");
-//                    price.setText("€" +
-//                           new DecimalFormat("0.00").format(craftBeer.price));
-
-//                    if (craftBeer.favourite == true)
-//                        fav.setImageResource(R.drawable.tumbs_on);
-//                    else
-//                        fav.setImageResource(R.drawable.tumbs_neu);
-
-//                }
-//            }
-
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Failed to read value
-//            }
-//        });
-
-       // database.addValueEventListener(messageListener);
-
-
-        //TODO The recycler view!!
-        //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //recyclerView.setAdapter(new RecyclerViewAdapter(this, app.beerList));
-
     }
 
 
@@ -213,7 +149,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             fragT.commit();
         }
         else if (id == R.id.nav_map) {
-            //startActivity(new Intent(this, Map.class));
             fragment = MapsFragment.newInstance();
             fragT.replace(R.id.fragment_container, fragment);
             fragT.addToBackStack(null);
@@ -228,10 +163,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
     protected void onResume() {
         super.onResume();
 
-//        craftBeerFragment = CraftBeerFragment.newInstance();
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.fragment_container, craftBeerFragment)
-//                .commit();
     }
 
     @Override

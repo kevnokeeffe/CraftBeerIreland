@@ -21,14 +21,10 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import ie.craftbeerireland.R;
@@ -120,10 +116,7 @@ public class AddFragment extends Fragment {
                     beerPrice, false,app.googlePhotoURL,
                     app.googleToken,getAddressFromLocation(app.mCurrentLocation),
                     mapFragment.beerLocation.latitude,mapFragment.beerLocation.longitude, beerID);
-            //app.beerList.add(c);
             DatabaseReference cineIndustryRef = mDatabase.child(app.user.getUid());
-//            Map<String, Object> map = new HashMap<>();
-//            map.put(key, c);
             cineIndustryRef.child("beers").child(beerID).setValue(c);
             cineIndustryRef.push();
 

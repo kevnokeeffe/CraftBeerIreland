@@ -248,23 +248,7 @@ public class MapsFragment extends SupportMapFragment implements
         resetMarkers();
     }
 
-//    mMap.setOnMapClickListener(new OnMapClickListener() {
-//
-//        @Override
-//        public void onMapClick(LatLng latlng) {
-//            // TODO Auto-generated method stub
-//
-//            if (marker != null) {
-//                marker.remove();
-//            }
-//            marker = mMap.addMarker(new MarkerOptions()
-//                    .position(latlng)
-//                    .icon(BitmapDescriptorFactory
-//                            .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-//            System.out.println(latlng);
-//
-//        }
-//    });
+
 
     private void resetMarkers() {
         mMap.clear();

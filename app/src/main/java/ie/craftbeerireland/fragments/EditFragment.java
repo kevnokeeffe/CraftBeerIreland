@@ -2,9 +2,7 @@ package ie.craftbeerireland.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,18 +11,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import ie.craftbeerireland.R;
-import ie.craftbeerireland.activities.Home;
 import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
-import ie.craftbeerireland.models.Marker;
 
 public class EditFragment extends Fragment {
 
@@ -37,6 +30,7 @@ public class EditFragment extends Fragment {
     private MapsFragment mapFragment;
     private OnFragmentInteractionListener mListener;
     private DatabaseReference myRef;
+
     public EditFragment() {
         // Required empty public constructor
     }
@@ -76,7 +70,6 @@ public class EditFragment extends Fragment {
             mapFragment.isAddBeer = true;
             mapFragment.beerLocation = new LatLng(cBeer.marker.coords.latitude,cBeer.marker.coords.longitude);
         }
-        //((TextView)v.findViewById(R.id.editTitleTV)).setText(cBeer.beerName);
 
         name = v.findViewById(R.id.editNameET);
         bar = v.findViewById(R.id.editBarET);
@@ -122,12 +115,8 @@ public class EditFragment extends Fragment {
                 cBeer.marker.coords.latitude = mapFragment.beerLocation.latitude;
                 cBeer.marker.coords.longitude = mapFragment.beerLocation.longitude;
                 myRef = FirebaseDatabase.getInstance().getReference("Database").child(app.user.getUid());
-//                DatabaseReference cineIndustryRef = mDatabase.child(app.user.getUid());
-//            Map<String, Object> map = new HashMap<>();
-//            map.put(key, c);
                 myRef.child("beers").child(cBeer.beerId).setValue(cBeer);
                 myRef.push();
-//                myRef.up
                 if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) {
                     getFragmentManager().popBackStack();
                     return;
