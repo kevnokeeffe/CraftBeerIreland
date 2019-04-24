@@ -82,10 +82,6 @@ public class AddFragment extends Fragment {
         price =  v.findViewById(R.id.addPriceET);
         ratingBar =  v.findViewById(R.id.addRatingBar);
         saveButton = v.findViewById(R.id.addBeerBtn);
-
-
-
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
