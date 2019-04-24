@@ -16,6 +16,10 @@
             android:id="@+id/nav_search"
             android:icon="@drawable/baseline_search_black_18dp"
             android:title="Search for Beer" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/baseline_satellite_black_18dp"
+            android:title="Map" />
 
     </group>
 

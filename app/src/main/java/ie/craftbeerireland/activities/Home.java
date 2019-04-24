@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Message;
@@ -41,6 +42,7 @@ import ie.craftbeerireland.adapters.RecyclerViewAdapter;
 import ie.craftbeerireland.fragments.AddFragment;
 import ie.craftbeerireland.fragments.CraftBeerFragment;
 import ie.craftbeerireland.fragments.EditFragment;
+import ie.craftbeerireland.fragments.MapsFragment;
 import ie.craftbeerireland.fragments.SearchFragment;
 import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
@@ -210,7 +212,13 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
             fragT.addToBackStack(null);
             fragT.commit();
         }
-
+        else if (id == R.id.nav_map) {
+            //startActivity(new Intent(this, Map.class));
+            fragment = MapsFragment.newInstance();
+            fragT.replace(R.id.fragment_container, fragment);
+            fragT.addToBackStack(null);
+            fragT.commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
