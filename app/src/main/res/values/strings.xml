@@ -33,6 +33,8 @@
 
     </string-array>
 
+    <string name="title_map">Craft Beer Map</string>
+    <string name="google_maps_key">AIzaSyDOcXv3-f8906mYTpc0JHCAhEbq2bR24jY</string>
 
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
