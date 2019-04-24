@@ -2,6 +2,7 @@ package ie.craftbeerireland.main;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Log;
 
@@ -26,7 +27,11 @@ public class CraftBeerIreland extends Application {
     private static CraftBeerIreland mInstance;
     public Location mCurrentLocation;
     public GoogleApiClient mGoogleApiClient;
-
+    public String googleToken;
+    public String googleName;
+    public String googleMail;
+    public String googlePhotoURL;
+    public Bitmap googlePhoto;
     public static CraftBeerIreland   app = CraftBeerIreland.getInstance();
     public static synchronized CraftBeerIreland getInstance() {
         return mInstance;

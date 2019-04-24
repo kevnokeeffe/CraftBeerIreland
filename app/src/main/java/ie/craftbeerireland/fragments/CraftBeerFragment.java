@@ -170,6 +170,7 @@ public class CraftBeerFragment  extends Fragment implements
         {
             public void onClick(DialogInterface dialog, int id)
             {
+                myRef.child(beer.beerId).removeValue();
                 activity.app.beerList.remove(beer);
                 listAdapter.beerList.remove(beer);
                 listAdapter.notifyDataSetChanged();

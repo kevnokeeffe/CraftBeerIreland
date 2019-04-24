@@ -1,185 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.AddFragment">
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".fragments.AddFragment">-->
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="0dp"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        tools:context=".fragments.AddFragment">
 
-        <TextView
-            android:id="@+id/addNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"
-            android:shadowColor="@android:color/black"
-            android:text="@string/beerNameLbl"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@android:color/darker_gray"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/addNameET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/addNameTV"
-
-            android:hint="Enter Beer Name"
-            android:inputType="textPersonName"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@color/white"
-            android:shadowColor="@android:color/black"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@color/colorAccent"
-            android:textColorLink="@android:color/black" />
-
-
-        <TextView
-            android:id="@+id/addPriceTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addCraftBarTV"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"
-            android:shadowColor="@android:color/black"
-            android:text="@string/beerPriceLbl"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@color/colorAccent"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/addPriceET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addPubET"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="9dp"
-            android:layout_toEndOf="@+id/addPriceTV"
-            android:hint="Enter Price"
-            android:inputType="numberDecimal"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"
-            android:shadowColor="@android:color/black"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@color/colorAccent"
-            android:textColorLink="@color/colorAccent" />
-
-
-        <TextView
-            android:id="@+id/addCraftBarTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addNameTV"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"
-            android:shadowColor="@android:color/black"
-            android:text="@string/craftBarLbl"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
-            android:textColorLink="@android:color/black"
-            android:textSize="18sp" />
-
-
-        <EditText
-            android:id="@+id/addPubET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addNameET"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/addCraftBarTV"
-            android:hint="Enter Bar Name"
-            android:inputType="textPersonName"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"
-            android:shadowColor="@android:color/black"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@color/colorAccent"
-            android:textColorLink="@color/colorAccent" />
-
-
-        <RatingBar
-            android:id="@+id/addRatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/addPriceET"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="8dp"
-            android:rating="3.5"
-            android:stepSize="0.5" />
-
-        <fragment
-            android:id="@+id/addmap"
-            android:name="ie.craftbeerireland.fragments.MapsFragment"
-            android:layout_width="364dp"
-            android:layout_height="162dp"
-            android:layout_below="@+id/addRatingBar"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.627"
-            tools:layout="@layout/activity_map" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/addBeerCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            app:cardCornerRadius="50dp">
+            <TextView
+                android:id="@+id/addNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:shadowColor="@android:color/black"
+                android:text="@string/beerNameLbl"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/addNameET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/addNameTV"
+
+                android:hint="Enter Beer Name"
+                android:inputType="textPersonName"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@color/white"
+                android:shadowColor="@android:color/black"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@android:color/black" />
 
 
-            <ImageButton
-                android:id="@+id/addBeerBtn"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+            <TextView
+                android:id="@+id/addPriceTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addCraftBarTV"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:shadowColor="@android:color/black"
+                android:text="@string/beerPriceLbl"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/addPriceET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addPubET"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/addPriceTV"
+                android:hint="Enter Price"
+                android:inputType="numberDecimal"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:shadowColor="@android:color/black"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@color/colorAccent" />
+
+
+            <TextView
+                android:id="@+id/addCraftBarTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addNameTV"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:shadowColor="@android:color/black"
+                android:text="@string/craftBarLbl"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@android:color/black"
+                android:textSize="18sp" />
+
+
+            <EditText
+                android:id="@+id/addPubET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addNameET"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/addCraftBarTV"
+                android:hint="Enter Bar Name"
+                android:inputType="textPersonName"
+                android:outlineAmbientShadowColor="@android:color/black"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:shadowColor="@android:color/black"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@color/colorAccent" />
+
+
+            <RatingBar
+                android:id="@+id/addRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addPriceET"
+                android:layout_alignParentStart="true"
                 android:layout_gravity="center"
-                android:background="@drawable/save_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.51"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="8dp"
+                android:rating="3.5"
+                android:stepSize="0.5" />
+
+            <fragment
+                android:id="@+id/addmap"
+                android:name="ie.craftbeerireland.fragments.MapsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="162dp"
+                android:layout_below="@+id/addRatingBar"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addmap" />
+                app:layout_constraintVertical_bias="0.627"
+                tools:layout="@layout/activity_map" />
 
-        </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/addBeerCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_below="@+id/addmap"
+                app:layout_constraintTop_toBottomOf="@+id/addmap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardCornerRadius="50dp">
 
-    </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/addBeerBtn"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/save_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.51"
+                    app:layout_constraintStart_toStartOf="parent"
+                     />
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+<!--</ScrollView>-->

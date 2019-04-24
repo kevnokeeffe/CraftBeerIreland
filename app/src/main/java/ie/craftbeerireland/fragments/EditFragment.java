@@ -16,10 +16,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import ie.craftbeerireland.R;
 import ie.craftbeerireland.activities.Home;
 import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.CraftBeer;
+import ie.craftbeerireland.models.Marker;
 
 public class EditFragment extends Fragment {
 
@@ -29,9 +34,9 @@ public class EditFragment extends Fragment {
     private EditText name, bar, price;
     private RatingBar ratingBar;
     public CraftBeerIreland app;
-
+    private MapsFragment mapFragment;
     private OnFragmentInteractionListener mListener;
-
+    private DatabaseReference myRef;
     public EditFragment() {
         // Required empty public constructor
     }
@@ -65,8 +70,13 @@ public class EditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_edit, container, false);
+        mapFragment = (MapsFragment) getChildFragmentManager().findFragmentById(R.id.addmap);
 
-        ((TextView)v.findViewById(R.id.editTitleTV)).setText(cBeer.beerName);
+        if (mapFragment != null) {
+            mapFragment.isAddBeer = true;
+            mapFragment.beerLocation = new LatLng(cBeer.marker.coords.latitude,cBeer.marker.coords.longitude);
+        }
+        //((TextView)v.findViewById(R.id.editTitleTV)).setText(cBeer.beerName);
 
         name = v.findViewById(R.id.editNameET);
         bar = v.findViewById(R.id.editBarET);
@@ -109,7 +119,15 @@ public class EditFragment extends Fragment {
                 cBeer.craftBar = craftBar;
                 cBeer.price = beerPrice;
                 cBeer.rating = ratingValue;
-
+                cBeer.marker.coords.latitude = mapFragment.beerLocation.latitude;
+                cBeer.marker.coords.longitude = mapFragment.beerLocation.longitude;
+                myRef = FirebaseDatabase.getInstance().getReference("Database").child(app.user.getUid());
+//                DatabaseReference cineIndustryRef = mDatabase.child(app.user.getUid());
+//            Map<String, Object> map = new HashMap<>();
+//            map.put(key, c);
+                myRef.child("beers").child(cBeer.beerId).setValue(cBeer);
+                myRef.push();
+//                myRef.up
                 if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) {
                     getFragmentManager().popBackStack();
                     return;

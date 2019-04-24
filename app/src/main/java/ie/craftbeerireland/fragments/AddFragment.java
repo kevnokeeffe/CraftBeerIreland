@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +20,12 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +46,8 @@ public class AddFragment extends Fragment {
     private ImageButton saveButton;
     private CraftBeerIreland app;
     private DatabaseReference mDatabase;
-
+    private GoogleMap mMap;
+    private MapsFragment mapFragment;
 
 
     public AddFragment() {
@@ -52,6 +59,8 @@ public class AddFragment extends Fragment {
 
         return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,11 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add, container, false);
+        mapFragment = (MapsFragment) getChildFragmentManager().findFragmentById(R.id.addmap);
+
+        if (mapFragment != null) {
+            mapFragment.isAddBeer = true;
+        }
 
         getActivity().setTitle(R.string.addABeerLbl);
         name = v.findViewById(R.id.addNameET);
@@ -101,13 +115,16 @@ public class AddFragment extends Fragment {
 
         if ((beerName.length() > 0) && (craftBar.length() > 0)
                 && (price.length() > 0)) {
+            String beerID = UUID.randomUUID().toString();
             CraftBeer c = new CraftBeer(beerName, craftBar, ratingValue,
-                    beerPrice, false);
+                    beerPrice, false,app.googlePhotoURL,
+                    app.googleToken,getAddressFromLocation(app.mCurrentLocation),
+                    mapFragment.beerLocation.latitude,mapFragment.beerLocation.longitude, beerID);
             //app.beerList.add(c);
             DatabaseReference cineIndustryRef = mDatabase.child(app.user.getUid());
 //            Map<String, Object> map = new HashMap<>();
 //            map.put(key, c);
-            cineIndustryRef.child("beers").child(UUID.randomUUID().toString()).setValue(c);
+            cineIndustryRef.child("beers").child(beerID).setValue(c);
             cineIndustryRef.push();
 
             startActivity(new Intent(this.getActivity(), Home.class));
@@ -129,5 +146,23 @@ public class AddFragment extends Fragment {
         }
     }
 
+    private String getAddressFromLocation( Location location ) {
+        Geocoder geocoder = new Geocoder( getActivity() );
+
+        String strAddress = "";
+        Address address;
+        try {
+            address = geocoder
+                    .getFromLocation( location.getLatitude(), location.getLongitude(), 1 )
+                    .get( 0 );
+            strAddress = address.getAddressLine(0) +
+                    " " + address.getAddressLine(1) +
+                    " " + address.getAddressLine(2);
+        }
+        catch (IOException e ) {
+        }
+
+        return strAddress;
+    }
 
 }

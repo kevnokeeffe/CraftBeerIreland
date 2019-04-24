@@ -1,6 +1,7 @@
 package ie.craftbeerireland.fragments;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -36,6 +37,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 
 import ie.craftbeerireland.R;
+import ie.craftbeerireland.activities.Base;
 import ie.craftbeerireland.main.CraftBeerIreland;
 import ie.craftbeerireland.models.Beer;
 import ie.craftbeerireland.models.CraftBeer;
@@ -48,20 +50,19 @@ public class MapsFragment extends SupportMapFragment implements
         GoogleMap.OnMapClickListener,
         GoogleMap.OnMarkerClickListener,
         OnMapReadyCallback {
-
     private LocationRequest mLocationRequest;
     private FusedLocationProviderClient mFusedLocationClient;
     private LocationCallback mLocationCallback;
-    //private List<CraftBeer> mBeerList;
     private long                        UPDATE_INTERVAL = 5000; /* 5 secs */
     private long                        FASTEST_INTERVAL = 1000; /* 1 sec */
     private GoogleMap                   mMap;
     private float                       zoom = 13f;
-
+    public Base activity;
     public CraftBeerIreland app = CraftBeerIreland.getInstance();
-
+    public boolean isAddBeer;
+    public LatLng beerLocation;
     private static final int            PERMISSION_REQUEST_CODE = 200;
-
+    boolean isFirstTime = true;
     private final int[]                 MAP_TYPES = {
             GoogleMap.MAP_TYPE_SATELLITE,
             GoogleMap.MAP_TYPE_NORMAL,
@@ -76,14 +77,14 @@ public class MapsFragment extends SupportMapFragment implements
         // Required empty public constructor
     }
 
-//    public void addBeers(List<CraftBeer> list){
-//        for(CraftBeer c : list)
-//            mMap.addMarker(new MarkerOptions()
-//                    .position(new LatLng(c.marker.coords.latitude, c.marker.coords.longitude))
-//                    .title(c.beerName + " €" + c.price)
-//                    .snippet(c.craftBar + " " + c.address)
-//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.beer)));
-//    }
+    public void addBeers(List<CraftBeer> list){
+        for(CraftBeer c : list)
+            mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(c.marker.coords.latitude, c.marker.coords.longitude))
+                    .title(c.beerName + " €" + c.price)
+                    .snippet(c.craftBar + " " + c.address)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.beer)));
+    }
 
     public static MapsFragment newInstance() {
         MapsFragment fragment = new MapsFragment();
@@ -102,6 +103,9 @@ public class MapsFragment extends SupportMapFragment implements
         catch(SecurityException se) {
             Toast.makeText(getActivity(),"Check Your Permissions",Toast.LENGTH_SHORT).show();
         }
+
+
+//        for CraftBeer beer in inactivity.app.beerList
     }
 
     private void createLocationRequest() {
@@ -120,7 +124,10 @@ public class MapsFragment extends SupportMapFragment implements
                 super.onLocationResult(locationResult);
 
                 app.mCurrentLocation = locationResult.getLastLocation();
-                initCamera(app.mCurrentLocation);
+                if (isFirstTime) {
+                    initCamera(app.mCurrentLocation);
+                    isFirstTime = false;
+                }
             }
         };
     }
@@ -188,6 +195,12 @@ public class MapsFragment extends SupportMapFragment implements
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (Base) activity;
+    }
+
+    @Override
     public void onInfoWindowClick(Marker marker) {
 
     }
@@ -211,8 +224,7 @@ public class MapsFragment extends SupportMapFragment implements
         if(checkPermission()) {
             mMap.setMyLocationEnabled(true);
             initCamera(app.mCurrentLocation);
-        }
-        else if (!checkPermission()) {
+        } else if (!checkPermission()) {
             requestPermission();
         }
         mMap.getUiSettings().setMapToolbarEnabled(true);
@@ -222,6 +234,60 @@ public class MapsFragment extends SupportMapFragment implements
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+
+        if (isAddBeer) {
+            mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    beerLocation = latLng;
+                    resetMarkers();
+                }
+            });
+        }
+
+        resetMarkers();
+    }
+
+//    mMap.setOnMapClickListener(new OnMapClickListener() {
+//
+//        @Override
+//        public void onMapClick(LatLng latlng) {
+//            // TODO Auto-generated method stub
+//
+//            if (marker != null) {
+//                marker.remove();
+//            }
+//            marker = mMap.addMarker(new MarkerOptions()
+//                    .position(latlng)
+//                    .icon(BitmapDescriptorFactory
+//                            .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+//            System.out.println(latlng);
+//
+//        }
+//    });
+
+    private void resetMarkers() {
+        mMap.clear();
+        if (isAddBeer) {
+            if (beerLocation == null) {
+                beerLocation = new LatLng(app.mCurrentLocation.getLatitude(),app.mCurrentLocation.getLongitude());
+            }
+            MarkerOptions mMarker = new MarkerOptions()
+                    .position(beerLocation)
+                    .icon(BitmapDescriptorFactory
+                            .fromResource(R.drawable.beer));
+            mMap.addMarker(mMarker);
+        } else {
+            for (CraftBeer beer : activity.app.beerList) {
+                MarkerOptions mMarker = new MarkerOptions()
+                        .position(new LatLng(beer.marker.coords.latitude, beer.marker.coords.longitude))
+                        .title(beer.craftBar)
+                        .snippet(beer.beerName)
+                        .icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.beer));
+                mMap.addMarker(mMarker);
+            }
+        }
     }
 
     //http://www.journaldev.com/10409/android-handling-runtime-permissions-example
