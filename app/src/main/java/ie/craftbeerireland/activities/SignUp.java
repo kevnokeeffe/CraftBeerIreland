@@ -44,6 +44,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        //Signup button checks if info entered is valid, and proceeds accordingly
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +96,7 @@ public class SignUp extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
+    //Back button pressed brings user back to login screen
     @Override
     public void onBackPressed() {
 

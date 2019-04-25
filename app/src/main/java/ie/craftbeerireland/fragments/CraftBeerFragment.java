@@ -104,6 +104,7 @@ public class CraftBeerFragment  extends Fragment implements
         myRef = database.getReference("Database").child(activity.app.user.getUid()).child("beers");
         myRef.addValueEventListener(new ValueEventListener(){
             @Override
+            //populating the list
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
@@ -157,7 +158,7 @@ public class CraftBeerFragment  extends Fragment implements
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setMessage("Are you sure you want to Delete the \'Beer\' " + stringName + "?");
         builder.setCancelable(false);
-
+        //Removes the beer item from firebase
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int id)

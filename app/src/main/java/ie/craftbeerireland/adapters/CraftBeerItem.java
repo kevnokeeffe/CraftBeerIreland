@@ -28,6 +28,7 @@ public class CraftBeerItem {
         imgDelete.setOnClickListener(deleteListener);
     }
 
+    //Sets the elements
     private void updateControls(CraftBeer beer) {
         ((TextView) view.findViewById(R.id.rowBeerName)).setText(beer.beerName);
         ((TextView) view.findViewById(R.id.rowCraftBar)).setText(beer.craftBar);

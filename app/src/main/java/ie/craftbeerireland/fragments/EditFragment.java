@@ -71,6 +71,7 @@ public class EditFragment extends Fragment {
             mapFragment.beerLocation = new LatLng(cBeer.marker.coords.latitude,cBeer.marker.coords.longitude);
         }
 
+        //Finds the lysout view and applys the databse value to it.
         name = v.findViewById(R.id.editNameET);
         bar = v.findViewById(R.id.editBarET);
         price = v.findViewById(R.id.editPriceET);
@@ -106,7 +107,7 @@ public class EditFragment extends Fragment {
             } catch (NumberFormatException e) {
                 beerPrice = 0.0;
             }
-
+            //Saves the new valuse to firebase
             if ((beerName.length() > 0) && (craftBar.length() > 0) && (beerPriceStr.length() > 0)) {
                 cBeer.beerName = beerName;
                 cBeer.craftBar = craftBar;
@@ -128,6 +129,7 @@ public class EditFragment extends Fragment {
         }
     }
 
+    //Add or remove the selected item from the favourites list
     public void toggle(View v) {
 
         if (isFavourite) {

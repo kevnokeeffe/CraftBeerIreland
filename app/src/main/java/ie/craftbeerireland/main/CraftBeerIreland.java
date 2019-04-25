@@ -1,13 +1,11 @@
 package ie.craftbeerireland.main;
 
 import android.app.Application;
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;

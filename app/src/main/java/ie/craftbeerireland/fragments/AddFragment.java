@@ -63,6 +63,7 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add, container, false);
+        //Inflates map
         mapFragment = (MapsFragment) getChildFragmentManager().findFragmentById(R.id.addmap);
 
         if (mapFragment != null) {
@@ -85,7 +86,7 @@ public class AddFragment extends Fragment {
 
         return v;
     }
-
+    //adds beer
     public void addBeer() {
 
         beerName = name.getText().toString();
@@ -98,6 +99,7 @@ public class AddFragment extends Fragment {
         }
         ratingValue = ratingBar.getRating();
 
+        //Adds all relevant info to the firebase database, checks if an element is empty and prompts user
         if ((beerName.length() > 0) && (craftBar.length() > 0)
                 && (price.length() > 0)) {
             String beerID = UUID.randomUUID().toString();
@@ -128,6 +130,7 @@ public class AddFragment extends Fragment {
         }
     }
 
+    //Gets current location address
     private String getAddressFromLocation( Location location ) {
         Geocoder geocoder = new Geocoder( getActivity() );
 

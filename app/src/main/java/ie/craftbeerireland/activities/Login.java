@@ -29,11 +29,13 @@ public class Login extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin;
     CraftBeerIreland app;
-    private GoogleApiClient mGoogleApiClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Get Auth from Firebase
         mAuth = FirebaseAuth.getInstance();
 
         new GoogleApiClient.Builder(this)
@@ -54,6 +56,7 @@ public class Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        //Launch Signup Aactivity
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +67,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        // Login button, checks if the details are valid.
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +112,8 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    //Bback button pressed gives user option to exit application
     @Override
     public void onBackPressed() {
                     new AlertDialog.Builder(this)

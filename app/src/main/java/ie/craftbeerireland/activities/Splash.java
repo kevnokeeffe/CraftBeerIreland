@@ -23,8 +23,7 @@ public class Splash extends Activity {
             new Handler().postDelayed(new Runnable() {
 
                 /*
-                 * Showing splash screen with a timer. This will be useful when you
-                 * want to show case your app logo / company
+                 * Showing splash screen with a timer.
                  */
 
                 @Override
@@ -33,6 +32,7 @@ public class Splash extends Activity {
                     // Start your app main activity
                     Intent i = new Intent(Splash.this, Login.class);
                     startActivity(i);
+                    //implements fade_in / fade_out xml files
                     overridePendingTransition(R.layout.fade_in, R.layout.fade_out);
 
                     // close this activity

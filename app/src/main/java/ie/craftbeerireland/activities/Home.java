@@ -110,7 +110,7 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    //Navigation Drawer elements
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 

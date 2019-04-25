@@ -270,7 +270,6 @@ public class MapsFragment extends SupportMapFragment implements
         }
     }
 
-    //http://www.journaldev.com/10409/android-handling-runtime-permissions-example
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(getActivity(), ACCESS_FINE_LOCATION);
 
