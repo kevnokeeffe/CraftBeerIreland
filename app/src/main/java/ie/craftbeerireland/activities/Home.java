@@ -85,19 +85,13 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you want to Quit?")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                    Home.this.finish();
-                        }
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
-        }
-
+                            Fragment fragment;
+                            fragT = getSupportFragmentManager().beginTransaction();
+                            fragment = CraftBeerFragment.newInstance();
+                            fragT.replace(R.id.fragment_container, fragment);
+                            fragT.addToBackStack(null);
+                            fragT.commit();
+                }
     }
 
     @Override
