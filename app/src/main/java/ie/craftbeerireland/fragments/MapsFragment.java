@@ -103,9 +103,6 @@ public class MapsFragment extends SupportMapFragment implements
         catch(SecurityException se) {
             Toast.makeText(getActivity(),"Check Your Permissions",Toast.LENGTH_SHORT).show();
         }
-
-
-//        for CraftBeer beer in inactivity.app.beerList
     }
 
     private void createLocationRequest() {
@@ -113,7 +110,6 @@ public class MapsFragment extends SupportMapFragment implements
         mLocationRequest.setInterval(UPDATE_INTERVAL);
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        //mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
     }
 
     /* Creates a callback for receiving location events.*/

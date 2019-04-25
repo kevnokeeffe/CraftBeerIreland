@@ -1,11 +1,7 @@
 package ie.craftbeerireland.fragments;
 
 import android.content.Context;
-import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
-
 import ie.craftbeerireland.R;
-import ie.craftbeerireland.adapters.BeerFilter;
-import ie.craftbeerireland.models.CraftBeer;
 
 public class SearchFragment extends CraftBeerFragment
         implements AdapterView.OnItemSelectedListener {

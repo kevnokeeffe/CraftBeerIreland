@@ -38,7 +38,6 @@ public class Home extends Base implements NavigationView.OnNavigationItemSelecte
         public List<CraftBeer> beerList;
         CraftBeer craftBeer;
         FragmentTransaction fragT;
-        ArrayAdapter<String> arrayAdapter;
         CraftBeerIreland app;
 
     @Override

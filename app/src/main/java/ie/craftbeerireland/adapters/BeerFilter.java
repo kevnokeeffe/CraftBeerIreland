@@ -1,10 +1,8 @@
 package ie.craftbeerireland.adapters;
 
 import android.widget.Filter;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import ie.craftbeerireland.models.CraftBeer;
 
 public class BeerFilter extends Filter {
